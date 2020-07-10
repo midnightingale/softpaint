@@ -45,8 +45,8 @@ function revealColor(){
   //pixel = averageStroke(pixel);
   stroke(pixel);
   console.log(mouseX,mouseY)
-  if(mouseX<=imgDimensions.x && mouseY <= imgDimensions.y){
-  line(pmouseX, pmouseY, mouseX, mouseY);}
+  //if(mouseX<=imgDimensions.x && mouseY <= imgDimensions.y){
+  line(pmouseX, pmouseY, mouseX, mouseY);//}
   lastColor = pixel;
 }
 
