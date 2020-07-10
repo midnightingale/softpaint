@@ -16,7 +16,6 @@ function setup() {
 
 function draw() {
   image(displayImg, 0, 0);
-  
 }
 
 function getDimensions(url) {
@@ -32,23 +31,9 @@ function getDimensions(url) {
   });
 }
 
-/*
-function newImage(link) {
-  let customImg, customImgUrl;
-  customImgUrl = link;
-  customImg = new Promise((resolve, reject) => {
-    customImg = loadImage(customImgUrl);
-    image(customImg, 0, 0);
-    resolve();
-  });
-  getDimensions(link);
-}*/
-
 async function userUpload() {
   userUrl = window.prompt("Enter an image URL:");
   await getDimensions(userUrl);
   resizeCanvas(imgDimensions.w, imgDimensions.h);
-  background(0);
   displayImg = loadImage(userUrl);
-  
 }
