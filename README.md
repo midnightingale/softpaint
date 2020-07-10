@@ -1,14 +1,10 @@
-the revealer
+the revealer: features
 =================
 
 
-### ← README.md
+### image linker
 
-That's this file, where you can tell people what your cool website does and how you built it.
-
-### ← index.html
-
-Where you'll write the content of your website. 
+Paste in an image link 
 
 ### ← style.css
 
@@ -22,7 +18,9 @@ If you're feeling fancy you can add interactivity to your site with JavaScript.
 
 Drag in `assets`, like images or music, to add them to your project
 
-Made by [Glitch](https://glitch.com/)
+
+
+
 -------------------
 
-\ ゜o゜)ノ
+made by Sophie Liu & Jason Alvarez

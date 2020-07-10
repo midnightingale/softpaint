@@ -8,7 +8,7 @@ let canvas,
   displayImg,
   pixel,
   onCanvas = false,
-  brushWeight = 4,
+  brushWeight = 6,
   lastColor = [128, 128, 128, 255];
 
 function preload() {
@@ -38,11 +38,13 @@ function getDimensions(url) {
       imgDimensions.w = this.width;
       imgDimensions.h = this.height;
       adjustCanvas();
+      document.getElementById("error-display").innerHTML = "";
       resolve();
     };
   });
 }
 
+//resizes canvas-div to match new image, or throws error if image is unreachable 
 async function userUpload() {
   imgUrl = window.prompt("Enter an image URL:");
   await getDimensions(imgUrl);
@@ -50,8 +52,9 @@ async function userUpload() {
   adjustCanvas();
 }
 
+//gets new photo from picsum.photos
 async function randomUpload() {
-  let randWidth = Math.floor(Math.random() * windowWidth + 150);
+  let randWidth = Math/Math.min(Math.floor(Math.random() * windowWidth), 150);
   let randHeight = Math.floor(Math.random() * windowHeight + 200);
   imgUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
   await getDimensions(imgUrl);
@@ -59,6 +62,7 @@ async function randomUpload() {
   adjustCanvas();
 }
 
+//draws a line based on pmouse{X,Y} and mouse{X,Y} of the average color between the two points
 function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
@@ -69,6 +73,7 @@ function revealColor() {
   lastColor = pixel;
 }
 
+//calculates the average color between two RGBA values using a squared-mean method
 function averageColor(color1, color2) {
   let avgColor = [];
   for (let i = 0; i < lastColor.length; i++) {
@@ -84,7 +89,6 @@ function mouseWheel(event) {
 
 function adjustCanvas() {
   resizeCanvas(imgDimensions.w, imgDimensions.h);
-  console.log(imgDimensions);
   document.getElementById("canvas-div").style =
     "width: " + imgDimensions.w + "px";
   document.getElementById("canvas-div").style =
