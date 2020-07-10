@@ -12,7 +12,6 @@ function preload() {
 function setup() {
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent('canvas-div');
-  adjustCanvas();
   strokeWeight(brushWeight);
 }
 
@@ -27,7 +26,7 @@ function getDimensions(url) {
     userImage.onload = function() {
       imgDimensions.w = this.width;
       imgDimensions.h = this.height;
-      console.log(imgDimensions, "promiseresolved");
+      adjustCanvas();
       resolve();
     };
   });
@@ -41,30 +40,32 @@ async function userUpload() {
 }
 
 function revealColor(){
-  //
-    pixel = displayImg.get(mouseX, mouseY);//}
+  pixel = displayImg.get(mouseX, mouseY);//}
   //pixel = averageStroke(pixel);
   stroke(pixel);
-  console.log(mouseX,mouseY)
   //if(mouseX<=imgDimensions.x && mouseY <= imgDimensions.y){
   line(pmouseX, pmouseY, mouseX, mouseY);//}
   lastColor = pixel;
 }
 
-function averageStroke(){
-  
+function averageStroke(colorIn){
+  let avgColor = []
+  for(let i=0; i<lastColor.length; i++){
+    avgColor[i] = sq(colorIn[i])
+  }
+  return avgColor;
 }
 
 
 
 function mouseWheel(event) { //use mousewheel to control stroke weight
-  print(event.delta);
   brushWeight += event.delta/50;
   strokeWeight(brushWeight)
 }
 
 function adjustCanvas(){
   resizeCanvas(imgDimensions.w, imgDimensions.h);
+  console.log(imgDimensions)
   document.getElementById('canvas-div').style= "width: "+imgDimensions.w + 'px'; 
   document.getElementById('canvas-div').style = "height: "+imgDimensions.h + 'px';
 }
