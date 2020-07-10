@@ -2,7 +2,7 @@
 let imgDimensions = { w: 640, h: 329 };
 let userUrl =
   "https://cdn.glitch.com/f979082c-4790-4538-b5e9-dcd548a7bef6%2Fgoogle-background-1467806874.jpg?v=1594410010295";
-let displayImg, brushWeight = 4, lastColor = [128, 128, 128, 255];
+let displayImg, pixel, brushWeight = 4, lastColor = [128, 128, 128, 255];
 
 
 function preload() {
@@ -40,11 +40,13 @@ async function userUpload() {
 }
 
 function revealColor(){
-  let pixel = displayImg.get(mouseX, mouseY);
-  //console.log(pixel);
+  //
+    pixel = displayImg.get(mouseX, mouseY);//}
+  //pixel = averageStroke(pixel);
   stroke(pixel);
-  averageStroke();
-  line(pmouseX, pmouseY, mouseX, mouseY);
+  console.log(mouseX,mouseY)
+  if(mouseX<=imgDimensions.x && mouseY <= imgDimensions.y){
+  line(pmouseX, pmouseY, mouseX, mouseY);}
   lastColor = pixel;
 }
 
