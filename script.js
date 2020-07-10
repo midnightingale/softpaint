@@ -1,4 +1,4 @@
-/* global createCanvas, strokeWeight, stroke, sq, line, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 let imgDimensions = { w: 640, h: 329 };
 let userUrl =
   "https://cdn.glitch.com/f979082c-4790-4538-b5e9-dcd548a7bef6%2Fgoogle-background-1467806874.jpg?v=1594410010295";
@@ -43,9 +43,9 @@ async function userUpload() {
 }
 
 async function randomUpload() {
-  let randHeight = Math.floor(Math.random() * 400 + 300)
-  let randHeight = Math.floor(Math.random() * 400 + 300)
-  userUrl = "https://picsum.photos/" + randDim + "/" + rand"/?blur=1";
+  let randWidth = Math.floor(Math.random() * windowWidth + 150)
+  let randHeight = Math.floor(Math.random() * windowHeight + 200)
+  userUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
   await getDimensions(userUrl);
   displayImg = loadImage(userUrl);
   adjustCanvas();
