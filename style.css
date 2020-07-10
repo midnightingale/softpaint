@@ -2,19 +2,37 @@
 body {
   font-family: 'Sahitya', serif;
   text-align: center;
-  position: absolute;
 }
 
-#userupload {
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button{
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
   width: 8em;
   top: -1vh;
-  color: #FFFFFF;
   padding: 3px;
-  margin: 0 auto;
+  margin: 3px auto;
   outline: none;
   position: relative;
+}
+
+#user-upload {
+  color: #FFFFFF;
   background: purple;
+  
+}
+
+#random-upload{
+  color: #FFFFFF;
+  background: purple;
+}
+
+#canvas-div{
+  box-shadow: 
 }

@@ -2,7 +2,7 @@
 let imgDimensions = { w: 640, h: 329 };
 let userUrl =
   "https://cdn.glitch.com/f979082c-4790-4538-b5e9-dcd548a7bef6%2Fgoogle-background-1467806874.jpg?v=1594410010295";
-let displayImg, pixel, brushWeight = 4, lastColor = [128, 128, 128, 255];
+let canvas, displayImg, pixel, brushWeight = 4, lastColor = [128, 128, 128, 255];
 
 
 function preload() {
@@ -10,9 +10,9 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(imgDimensions.w, imgDimensions.h);
+  canvas = createCanvas(imgDimensions.w, imgDimensions.h);
+  canvas.parent('canvas-div');
   strokeWeight(brushWeight);
-  //image(displayImg, 0, 0);
 }
 
 function draw() {
