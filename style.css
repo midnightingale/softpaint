@@ -1,6 +1,6 @@
 
 body {
-  font-family: 'Sahitya', serif;
+  font-family: 'Jost', sans-serif;
   text-align: center;
 }
 
@@ -24,7 +24,7 @@ body {
 
 #user-upload {
   color: #FFFFFF;
-  background: purple;
+  background: linear-gradient(0deg, rgba(42,201,235,1) 0%, rgba(0,255,219,1) 100%);
   
 }
 
