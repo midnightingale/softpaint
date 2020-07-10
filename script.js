@@ -5,6 +5,7 @@ let userUrl =
 let canvas,
   displayImg,
   pixel,
+  onCanvas=false,
   brushWeight = 4,
   lastColor = [128, 128, 128, 255];
 
@@ -53,14 +54,14 @@ async function randomUpload() {
 
 function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
-  //pixel = averageStroke(pixel);
+  pixel = averageStroke(pixel);
   stroke(pixel);
-  //if(mouseX<=imgDimensions.x && mouseY <= imgDimensions.y){
-  line(pmouseX, pmouseY, mouseX, mouseY); //}
+  if(onCanvas){
+  line(pmouseX, pmouseY, mouseX, mouseY);}
   lastColor = pixel;
 }
 
-function averageStroke(colorIn) {
+function averageColor(colorIn) {
   let avgColor = [];
   for (let i = 0; i < lastColor.length; i++) {
     avgColor[i] = Math.sqrt((sq(colorIn[i]) + sq(lastColor[i])) / 2);
@@ -81,3 +82,6 @@ function adjustCanvas() {
   document.getElementById("canvas-div").style =
     "height: " + imgDimensions.h + "px";
 }
+
+document.getElementById("canvas-div").addEventListener("mouseenter", function() {onCanvas=true;});
+document.getElementById("canvas-div").addEventListener("mouseout", function() {onCanvas=false;});
