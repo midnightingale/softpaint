@@ -1,7 +1,9 @@
 /* global createCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
-let imgDimensions = { w: 640, h: 329 };
+
+//default values
+let imgDimensions = { w: 570, h: 450 };
 let imgUrl =
-  "https://cdn.glitch.com/f979082c-4790-4538-b5e9-dcd548a7bef6%2Fgoogle-background-1467806874.jpg?v=1594410010295";
+  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188";
 let canvas,
   displayImg,
   pixel,
@@ -36,10 +38,8 @@ function getDimensions(url) {
       imgDimensions.w = this.width;
       imgDimensions.h = this.height;
       adjustCanvas();
-      document.getElementById("p1").innerHTML = "";
       resolve();
     };
-    
   });
 }
 
