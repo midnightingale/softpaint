@@ -1,11 +1,20 @@
-/* CSS files add styling rules to your content */
 
 body {
-  font-family: helvetica, arial, sans-serif;
-  margin: 2em;
+  font-family: "Noto Sans JP", sans-serif;
+  text-align: center;
+  position: absolute;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
+#userupload {
+  user-select: none;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 7em;
+  top: -1vh;
+  color: #FFFFFF;
+  padding: 3px;
+  margin: 0 auto;
+  outline: none;
+  position: relative;
+  background: hsl(192, 69%, 60%);
 }

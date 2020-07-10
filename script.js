@@ -1,17 +1,54 @@
-/*global image, loadImage*/
+/* global createCanvas, colorMode, HSB, background loadImage image resizeCanvas*/
+let imgDimensions = { w: 640, h: 329 };
+let userUrl =
+  "https://cdn.glitch.com/f979082c-4790-4538-b5e9-dcd548a7bef6%2Fgoogle-background-1467806874.jpg?v=1594410010295";
+let displayImg;
 
-let img;
 function preload() {
-  img = loadImage('https://talkingbiznews.com/wp-content/uploads/2019/10/Google.jpg');
-}
-function setup() {
-  // Top-left corner of the img is at (0, 0)
-  // Width and height are the img's original width and height
-  createCanvas(500,500)
-  image(img, 0, 0);
+  displayImg = loadImage(userUrl);
 }
 
-function draw(){
-  background(0)
-  image(img, 0, 0);
+function setup() {
+  createCanvas(imgDimensions.w, imgDimensions.h);
+  colorMode(HSB, 360, 100, 100);
+  image(displayImg, 0, 0);
+}
+
+function draw() {
+  image(displayImg, 0, 0);
+  
+}
+
+function getDimensions(url) {
+  let userImage = new Image();
+  userImage.src = url;
+  return new Promise((resolve, reject) => {
+    userImage.onload = function() {
+      imgDimensions.w = this.width;
+      imgDimensions.h = this.height;
+      console.log(imgDimensions, "promiseresolved");
+      resolve();
+    };
+  });
+}
+
+/*
+function newImage(link) {
+  let customImg, customImgUrl;
+  customImgUrl = link;
+  customImg = new Promise((resolve, reject) => {
+    customImg = loadImage(customImgUrl);
+    image(customImg, 0, 0);
+    resolve();
+  });
+  getDimensions(link);
+}*/
+
+async function userUpload() {
+  userUrl = window.prompt("Enter an image URL:");
+  await getDimensions(userUrl);
+  resizeCanvas(imgDimensions.w, imgDimensions.h);
+  background(0);
+  displayImg = loadImage(userUrl);
+  
 }
