@@ -34,5 +34,6 @@ body {
 }
 
 #canvas-div{
-  box-shadow: 
+  box-shadow: 0 0px 5px grey;
+  margin: 10px;
 }
