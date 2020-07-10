@@ -1,9 +1,12 @@
-/* global createCanvas, strokeWeight, stroke, line, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, strokeWeight, stroke, sq, line, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 let imgDimensions = { w: 640, h: 329 };
 let userUrl =
   "https://cdn.glitch.com/f979082c-4790-4538-b5e9-dcd548a7bef6%2Fgoogle-background-1467806874.jpg?v=1594410010295";
-let canvas, displayImg, pixel, brushWeight = 4, lastColor = [128, 128, 128, 255];
-
+let canvas,
+  displayImg,
+  pixel,
+  brushWeight = 4,
+  lastColor = [128, 128, 128, 255];
 
 function preload() {
   displayImg = loadImage(userUrl);
@@ -11,7 +14,7 @@ function preload() {
 
 function setup() {
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
-  canvas.parent('canvas-div');
+  canvas.parent("canvas-div");
   strokeWeight(brushWeight);
 }
 
@@ -39,33 +42,42 @@ async function userUpload() {
   adjustCanvas();
 }
 
-function revealColor(){
-  pixel = displayImg.get(mouseX, mouseY);//}
+async function randomUpload() {
+  let randHeight = Math.floor(Math.random() * 400 + 300)
+  let randHeight = Math.floor(Math.random() * 400 + 300)
+  userUrl = "https://picsum.photos/" + randDim + "/" + rand"/?blur=1";
+  await getDimensions(userUrl);
+  displayImg = loadImage(userUrl);
+  adjustCanvas();
+}
+
+function revealColor() {
+  pixel = displayImg.get(mouseX, mouseY); //}
   //pixel = averageStroke(pixel);
   stroke(pixel);
   //if(mouseX<=imgDimensions.x && mouseY <= imgDimensions.y){
-  line(pmouseX, pmouseY, mouseX, mouseY);//}
+  line(pmouseX, pmouseY, mouseX, mouseY); //}
   lastColor = pixel;
 }
 
-function averageStroke(colorIn){
-  let avgColor = []
-  for(let i=0; i<lastColor.length; i++){
-    avgColor[i] = sq(colorIn[i])
+function averageStroke(colorIn) {
+  let avgColor = [];
+  for (let i = 0; i < lastColor.length; i++) {
+    avgColor[i] = Math.sqrt((sq(colorIn[i]) + sq(lastColor[i])) / 2);
   }
   return avgColor;
 }
 
-
-
-function mouseWheel(event) { //use mousewheel to control stroke weight
-  brushWeight += event.delta/50;
-  strokeWeight(brushWeight)
+function mouseWheel(event) {
+  brushWeight += event.delta / 50;
+  strokeWeight(brushWeight);
 }
 
-function adjustCanvas(){
+function adjustCanvas() {
   resizeCanvas(imgDimensions.w, imgDimensions.h);
-  console.log(imgDimensions)
-  document.getElementById('canvas-div').style= "width: "+imgDimensions.w + 'px'; 
-  document.getElementById('canvas-div').style = "height: "+imgDimensions.h + 'px';
+  console.log(imgDimensions);
+  document.getElementById("canvas-div").style =
+    "width: " + imgDimensions.w + "px";
+  document.getElementById("canvas-div").style =
+    "height: " + imgDimensions.h + "px";
 }
