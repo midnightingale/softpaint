@@ -5,10 +5,9 @@ let imgUrl =
 let canvas,
   displayImg,
   pixel,
-  onCanvas=false,
+  onCanvas = false,
   brushWeight = 4,
   lastColor = [128, 128, 128, 255];
-
 
 function preload() {
   displayImg = loadImage(imgUrl);
@@ -24,16 +23,23 @@ function draw() {
   revealColor();
 }
 
+/*images take time to load, so this function returns a Promise that 
+causes other functions to wait until it's done*/
 function getDimensions(url) {
   let userImage = new Image();
   userImage.src = url;
+  userImage.onerror = function() {
+      document.getElementById("error-display").innerHTML = "Sorry, we can't load that image.";
+    };
   return new Promise((resolve, reject) => {
     userImage.onload = function() {
       imgDimensions.w = this.width;
       imgDimensions.h = this.height;
       adjustCanvas();
+      document.getElementById("p1").innerHTML = "";
       resolve();
     };
+    
   });
 }
 
@@ -45,8 +51,8 @@ async function userUpload() {
 }
 
 async function randomUpload() {
-  let randWidth = Math.floor(Math.random() * windowWidth + 150)
-  let randHeight = Math.floor(Math.random() * windowHeight + 200)
+  let randWidth = Math.floor(Math.random() * windowWidth + 150);
+  let randHeight = Math.floor(Math.random() * windowHeight + 200);
   imgUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
   await getDimensions(imgUrl);
   displayImg = loadImage(imgUrl);
@@ -57,8 +63,9 @@ function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
   stroke(pixel);
-  if(onCanvas){
-  line(pmouseX, pmouseY, mouseX, mouseY);}
+  if (onCanvas) {
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  }
   lastColor = pixel;
 }
 
@@ -81,9 +88,15 @@ function adjustCanvas() {
   document.getElementById("canvas-div").style =
     "width: " + imgDimensions.w + "px";
   document.getElementById("canvas-div").style =
-    "height: " + imgDimensions.h-100 + "px";
+    "height: " + imgDimensions.h - 100 + "px";
 }
 
 //prevents black lines when mouse moves off canvas
-document.getElementById("canvas-div").addEventListener("mouseenter", function() {onCanvas=true;});
-document.getElementById("canvas-div").addEventListener("mouseout", function() {onCanvas=false;});
+document
+  .getElementById("canvas-div")
+  .addEventListener("mouseenter", function() {
+    onCanvas = true;
+  });
+document.getElementById("canvas-div").addEventListener("mouseout", function() {
+  onCanvas = false;
+});
