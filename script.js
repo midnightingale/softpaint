@@ -12,7 +12,7 @@ let canvas,
   lastColor = [128, 128, 128, 255];
 
 function preload() {
-  displayImg = loadImage(imgUrl);
+  displayImg = loadImage(imgUrl, null, imageError);
 }
 
 function setup() {
@@ -30,10 +30,7 @@ causes other functions to wait until it's done*/
 function getDimensions(url) {
   let userImage = new Image();
   userImage.src = url;
-  userImage.onerror = function() {
-    document.getElementById("error-display").innerHTML =
-      "Sorry, we can't load that image.";
-  };
+  userImage.onerror = imageError();
   return new Promise((resolve, reject) => {
     userImage.onload = function() {
       imgDimensions.w = this.width;
@@ -45,15 +42,11 @@ function getDimensions(url) {
   });
 }
 
-function mouseClicked(){
-  isPainting = !isPainting;
-}
-
 //resizes canvas-div to match new image, or throws error if image is unreachable
 async function userUpload() {
   imgUrl = window.prompt("Enter an image URL:", "filename.png, .jpg, etc.");
   await getDimensions(imgUrl);
-  displayImg = loadImage(imgUrl);
+  displayImg = loadImage(imgUrl, null, imageError);
   adjustCanvas();
 }
 
@@ -69,7 +62,7 @@ async function randomUpload() {
   );
   imgUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
   await getDimensions(imgUrl);
-  displayImg = loadImage(imgUrl);
+  displayImg = loadImage(imgUrl, null, imageError);
   adjustCanvas();
 }
 
@@ -105,6 +98,12 @@ function adjustCanvas() {
   document.getElementById("canvas-div").style =
     "height: " + imgDimensions.h - 100 + "px";
 }
+
+function imageError() {
+    document.getElementById("error-display").innerHTML =
+      "Image pending (or retrieval failed...)";
+  };
+
 
 //prevents black lines when mouse moves off canvas
 document
