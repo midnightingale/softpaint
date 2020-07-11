@@ -4,9 +4,8 @@ body {
   font-weight: 300;
 }
 
-h1{
-  margin-block-start: 0;
-    margin-block-end: 0;
+h1, p{
+  margin: 0;
 }
 
 .container {

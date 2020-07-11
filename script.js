@@ -66,7 +66,7 @@ async function randomUpload() {
   adjustCanvas();
 }
 
-//draws an ellipse based on pmouse{X,Y} and mouse{X,Y} of the average color between the two points
+//draws an ellipse of average color between the previous and current mouse position
 function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
@@ -75,7 +75,7 @@ function revealColor() {
   let brushTemp = brushWeight;
   let brushFrac = brushTemp/25; //watercolour effect
   
-  if (isPainting) {
+  if (isPainting && (pmouseX != mouseX) && (pmouseY != mouseY) ) {
     for(let i=0; i<15; i++){
     brushTemp -= brushFrac ; 
     ellipse(mouseX, mouseY, brushTemp);
@@ -95,7 +95,8 @@ function averageColor(color1, color2) {
 
 function mouseWheel(event) {
   brushWeight += event.delta / 100;
-  strokeWeight(brushWeight);
+  document.getElementById("instruction").innerHTML =
+      "scroll brush size: "+ brushWeight + " | hover to paint";
 }
 
 function adjustCanvas() {
