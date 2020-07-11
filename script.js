@@ -16,6 +16,11 @@ function preload() {
 }
 
 function setup() {
+  if(windowWidth<570){ //mobile device responsiveness for default img
+    imgDimensions.w = windowWidth-50;
+    imgDimensions.h = imgDimensions.w*15/19;
+  }
+  
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   noStroke();
@@ -113,7 +118,7 @@ function imageError() {
   };
 
 function savePainting(){
-  saveCanvas('myPainting', 'png');
+  saveCanvas('mySoftpoints', 'png');
 }
 
 //prevents black lines when mouse moves off canvas
