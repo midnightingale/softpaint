@@ -4,7 +4,7 @@ the revealer: features
 
 ### image linker
 
-Paste in a link to an image to paint. Some websites do not allow their images to be retrieved, so your painting will end up black.  
+Paste in a link to an image to paint. Some websites don't allow their images to be retrieved, so your painting will end up black.  
 
 ### random painting
 

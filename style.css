@@ -1,11 +1,10 @@
-
 body {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   text-align: center;
   font-weight: 300;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,7 +12,7 @@ body {
   margin: 0 auto;
 }
 
-.button{
+.button {
   font-weight: 500;
   user-select: none;
   cursor: pointer;
@@ -21,41 +20,57 @@ body {
   width: 9em;
   top: -1vh;
   padding: 3px;
-  margin: 3px ;
+  margin: 3px;
   outline: none;
   position: relative;
 }
 
-.button:hover{
+.button:hover {
   box-shadow: 0 0px 3px teal;
 }
 
 #user-upload {
   color: #FFFFFF;
-  background: linear-gradient(0deg, rgba(42,201,235,1) 0%, rgba(32,233,205,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(42, 201, 235, 1) 0%,
+    rgba(32, 233, 205, 1) 100%
+  );
 }
 
 #user-upload:active {
-  background: linear-gradient(0deg, rgba(32,233,205,1) 0%, rgba(42,201,235,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(32, 233, 205, 1) 0%,
+    rgba(42, 201, 235, 1) 100%
+  );
 }
 
-#random-upload{
+#random-upload {
   color: #FFFFFF;
-  background: rgb(29,135,255);
-  background: linear-gradient(0deg, rgba(29,135,255,1) 0%, rgba(35,197,240,1) 100%);
+  background: rgb(29, 135, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(29, 135, 255, 1) 0%,
+    rgba(35, 197, 240, 1) 100%
+  );
 }
 
-#random-upload:active{
-  background: linear-gradient(0deg, rgba(35,197,240,1) 0%, rgba(29,135,255,1) 100%);
+#random-upload:active {
+  background: linear-gradient(
+    0deg,
+    rgba(35, 197, 240, 1) 0%,
+    rgba(29, 135, 255, 1) 100%
+  );
 }
 
-#canvas-div{
+#canvas-div {
   box-shadow: 0 0px 5px grey;
   margin: 10px;
   display: inline-block;
 }
 
-#error-display{
+#error-display {
   color: red;
   margin: 10px;
 }

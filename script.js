@@ -31,8 +31,9 @@ function getDimensions(url) {
   let userImage = new Image();
   userImage.src = url;
   userImage.onerror = function() {
-      document.getElementById("error-display").innerHTML = "Sorry, we can't load that image.";
-    };
+    document.getElementById("error-display").innerHTML =
+      "Sorry, we can't load that image.";
+  };
   return new Promise((resolve, reject) => {
     userImage.onload = function() {
       imgDimensions.w = this.width;
@@ -44,7 +45,7 @@ function getDimensions(url) {
   });
 }
 
-//resizes canvas-div to match new image, or throws error if image is unreachable 
+//resizes canvas-div to match new image, or throws error if image is unreachable
 async function userUpload() {
   imgUrl = window.prompt("Enter an image URL:", "filename.png, .jpg, etc.");
   await getDimensions(imgUrl);
@@ -54,8 +55,14 @@ async function userUpload() {
 
 //gets new photo from picsum.photos, with dimensions < window size
 async function randomUpload() {
-  let randWidth = Math.min(Math.max(Math.floor(Math.random() * windowWidth), 150), windowWidth);
-  let randHeight = Math.min(Math.max(Math.floor(Math.random() * windowHeight), 200), windowHeight);
+  let randWidth = Math.min(
+    Math.max(Math.floor(Math.random() * windowWidth), 150),
+    windowWidth
+  );
+  let randHeight = Math.min(
+    Math.max(Math.floor(Math.random() * windowHeight), 200),
+    windowHeight
+  );
   imgUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
   await getDimensions(imgUrl);
   displayImg = loadImage(imgUrl);
