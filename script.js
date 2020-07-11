@@ -8,8 +8,8 @@ let canvas,
   displayImg,
   pixel,
   isPainting = false,
-  brushWeight = 6,
-  lastColor = [128, 128, 128, 255];
+  brushWeight = 20,
+  lastColor = [128, 128, 128, 20];
 
 function preload() {
   displayImg = loadImage(imgUrl, null, imageError);
@@ -70,14 +70,16 @@ async function randomUpload() {
 function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
-  pixel[3] = 5;
+  pixel[3] = 10;
   stroke(pixel);
+  let brushTemp = brushWeight;
+  let brushFrac = brushTemp/25;
   
   if (isPainting) {
-    for(let i=0; i<5; i++){
-    pixel[3] += 50;
-    let brushTemp = brushWeight;
-    brushTemp-=3;
+    for(let i=0; i<15; i++){
+    
+    brushTemp -= brushFrac ;
+      console.log(brushTemp)
     strokeWeight(brushTemp);
     line(pmouseX, pmouseY, mouseX, mouseY);
     }
