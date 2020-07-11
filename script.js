@@ -7,7 +7,7 @@ let imgUrl =
 let canvas,
   displayImg,
   pixel,
-  onCanvas = false,
+  isPainting = false,
   brushWeight = 6,
   lastColor = [128, 128, 128, 255];
 
@@ -23,9 +23,6 @@ function setup() {
 
 function draw() {
   revealColor();
-  if(onCanvas){
-    cursor('https://s3.amazonaws.com/mupublicdata/cursor.cur')
-  }
 }
 
 /*images take time to load, so this function returns a Promise that 
@@ -49,7 +46,7 @@ function getDimensions(url) {
 
 //resizes canvas-div to match new image, or throws error if image is unreachable 
 async function userUpload() {
-  imgUrl = window.prompt("Enter an image URL:");
+  imgUrl = window.prompt("Enter an image URL:", "filename.png, .jpg, etc.");
   await getDimensions(imgUrl);
   displayImg = loadImage(imgUrl);
   adjustCanvas();
@@ -70,7 +67,7 @@ function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
   stroke(pixel);
-  if (onCanvas) {
+  if (isPainting) {
     line(pmouseX, pmouseY, mouseX, mouseY);
   }
   lastColor = pixel;
@@ -102,8 +99,8 @@ function adjustCanvas() {
 document
   .getElementById("canvas-div")
   .addEventListener("mouseenter", function() {
-    onCanvas = true;
+    isPainting = true;
   });
 document.getElementById("canvas-div").addEventListener("mouseout", function() {
-  onCanvas = false;
+  isPainting = false;
 });
