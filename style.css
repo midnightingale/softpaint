@@ -104,7 +104,7 @@ p {
 }
 
 #canvas-div {
-  box-shadow: 0 0px 5px #838383;
+  box-shadow: 0 0px 9px #EEEEEE;
   margin: 10px 0px 10px 0px ;
   display: inline-block;
   line-height: 0;

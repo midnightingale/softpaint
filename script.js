@@ -14,7 +14,7 @@ let canvas,
   lastColor = [128, 128, 128, 20];
 
 function preload() {
-  displayImg = loadImage(imgUrl, null, imageError);
+  displayImg = loadImage(imgUrl);
 }
 
 function setup() {
@@ -25,6 +25,7 @@ function setup() {
   
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
+  background(235);
   noStroke();
 }
 
@@ -37,7 +38,6 @@ causes other functions to wait until it's done*/
 function getDimensions(url) {
   let userImage = new Image();
   userImage.src = url;
-  userImage.onerror = imageError();
   return new Promise((resolve, reject) => {
     userImage.onload = function() {
       imgDimensions.w = this.width;
@@ -51,7 +51,7 @@ function getDimensions(url) {
 
 //resizes canvas-div to match new image, or throws error if image is unreachable
 async function userUpload() {
-  imgUrl = window.prompt("Enter an image URL:", "filename.png, .jpg, etc.");
+  imgUrl = window.prompt("Enter an image URL:", "[.jpg, .png, etc. from any image hosting site]");
   await getDimensions(imgUrl);
   displayImg = loadImage(imgUrl, null, imageError);
   adjustCanvas();
@@ -69,7 +69,7 @@ async function randomUpload() {
   );
   imgUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
   await getDimensions(imgUrl);
-  displayImg = loadImage(imgUrl, null, imageError);
+  displayImg = loadImage(imgUrl);
   adjustCanvas();
 }
 
@@ -116,7 +116,7 @@ function adjustCanvas() {
 
 function imageError() {
     document.getElementById("error-display").innerHTML =
-      "Image pending (or retrieval failed)...";
+      "Sorry, we couldn't load that image. Try another!";
   };
 
 function savePainting(){
