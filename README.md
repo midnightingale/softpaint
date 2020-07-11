@@ -4,20 +4,19 @@ the revealer: features
 
 ### image linker
 
-Paste in an image link 
+Paste in a link to an image to paint. Some websites do not allow their images to be retrieved, so your painting will end up black.  
 
-### ← style.css
+### random painting
 
-CSS files add styling rules to your content.
+Retrives a random image to paint from picsum.photos. The image takes a second to load, so if you start painting too fast you'll see black - but you can paint over that!
 
-### ← script.js
+### scroll wheel brush size
 
-If you're feeling fancy you can add interactivity to your site with JavaScript.
+Scrolling up and down decreases or increases the diameter of the brush.
 
-### ← assets
+### stroke averaging
 
-Drag in `assets`, like images or music, to add them to your project
-
+For a more realistic and artistic painting experience, we averaged the RGBA values between pixels using [this method](https://sighack.com/post/averaging-rgb-colors-the-right-way). 
 
 
 

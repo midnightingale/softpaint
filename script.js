@@ -1,4 +1,4 @@
-/* global createCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, cursor, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -23,6 +23,9 @@ function setup() {
 
 function draw() {
   revealColor();
+  if(onCanvas){
+    cursor()
+  }
 }
 
 /*images take time to load, so this function returns a Promise that 
@@ -54,8 +57,8 @@ async function userUpload() {
 
 //gets new photo from picsum.photos
 async function randomUpload() {
-  let randWidth = Math/Math.min(Math.floor(Math.random() * windowWidth), 150);
-  let randHeight = Math.floor(Math.random() * windowHeight + 200);
+  let randWidth = Math.min(Math.max(Math.floor(Math.random() * windowWidth), 150), windowWidth);
+  let randHeight = Math.min(Math.max(Math.floor(Math.random() * windowHeight), 200), windowHeight);
   imgUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
   await getDimensions(imgUrl);
   displayImg = loadImage(imgUrl);
@@ -83,7 +86,7 @@ function averageColor(color1, color2) {
 }
 
 function mouseWheel(event) {
-  brushWeight += event.delta / 50;
+  brushWeight += event.delta / 100;
   strokeWeight(brushWeight);
 }
 
