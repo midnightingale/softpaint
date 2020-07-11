@@ -105,6 +105,7 @@ function imageError() {
   };
 
 
+
 //prevents black lines when mouse moves off canvas
 document
   .getElementById("canvas-div")

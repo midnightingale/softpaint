@@ -4,6 +4,11 @@ body {
   font-weight: 300;
 }
 
+h1{
+  margin-block-start: 0;
+    margin-block-end: 0;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -64,6 +69,17 @@ body {
   );
 }
 
+#save-painting {
+  color: #FFFFFF;
+  background: rgb(111,43,187);
+  background: linear-gradient(0deg, rgba(135,54,226,1) 0%, rgba(179,138,255,1) 100%);
+}
+
+#save-painting:active {
+  background: rgba(135,54,226,1);
+background: linear-gradient(0deg, rgba(179,138,255,1) 0%, rgba(135,54,226,1) 100%);
+}
+
 #canvas-div {
   box-shadow: 0 0px 5px grey;
   margin: 10px;
@@ -71,6 +87,6 @@ body {
 }
 
 #error-display {
-  color: red;
+  color: grey;
   margin: 10px;
 }
