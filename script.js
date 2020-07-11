@@ -45,6 +45,10 @@ function getDimensions(url) {
   });
 }
 
+function mouseClicked(){
+  isPainting = !isPainting;
+}
+
 //resizes canvas-div to match new image, or throws error if image is unreachable
 async function userUpload() {
   imgUrl = window.prompt("Enter an image URL:", "filename.png, .jpg, etc.");
