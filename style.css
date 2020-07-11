@@ -1,15 +1,26 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
 body {
+  background-attachment: fixed;
+  margin: 0;
   font-family: "Jost", sans-serif;
   text-align: center;
   font-weight: 300;
-  color: #F5F5F5 ;
-  background: rgb(34,34,34);
-background: linear-gradient(0deg, rgba(34,34,34,1) 0%, rgba(89,89,89,1) 100%);
+  color: #F5F5F5;
+  background: rgb(34, 34, 34);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 34, 34, 1) 0%,
+    rgba(89, 89, 89, 1) 100%
+  );
   background-repeat: no-repeat;
   height: 110%;
 }
 
-h1, p{
+h1,
+p {
   margin: 0;
 }
 
@@ -75,18 +86,26 @@ h1, p{
 
 #save-painting {
   color: #FFFFFF;
-  background: rgb(111,43,187);
-  background: linear-gradient(0deg, rgba(135,54,226,1) 0%, rgba(179,138,255,1) 100%);
+  background: rgb(111, 43, 187);
+  background: linear-gradient(
+    0deg,
+    rgba(135, 54, 226, 1) 0%,
+    rgba(179, 138, 255, 1) 100%
+  );
 }
 
 #save-painting:active {
-  background: rgba(135,54,226,1);
-background: linear-gradient(0deg, rgba(179,138,255,1) 0%, rgba(135,54,226,1) 100%);
+  background: rgba(135, 54, 226, 1);
+  background: linear-gradient(
+    0deg,
+    rgba(179, 138, 255, 1) 0%,
+    rgba(135, 54, 226, 1) 100%
+  );
 }
 
 #canvas-div {
-  box-shadow: 0 0px 5px black;
-  margin: 10px;
+  box-shadow: 0 0px 5px grey;
+  
   display: inline-block;
 }
 
