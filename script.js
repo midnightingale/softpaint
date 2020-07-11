@@ -55,22 +55,25 @@ async function userUpload() {
   await getDimensions(imgUrl);
   displayImg = loadImage(imgUrl, null, imageError);
   adjustCanvas();
+  document.getElementById("source-link").innerHTML = "";
 }
 
 //gets new photo from picsum.photos, with dimensions < window size
 async function randomUpload() {
   let randWidth = Math.min(
-    Math.max(Math.floor(Math.random() * (windowWidth-50)), 200),
+    Math.max(Math.floor(Math.random() * (windowWidth-50)), 300),
     windowWidth-50
   );
   let randHeight = Math.min(
-    Math.max(Math.floor(Math.random() * (windowHeight-200)), 250),
+    Math.max(Math.floor(Math.random() * (windowHeight-200)), 450),
     windowHeight-200
   );
-  imgUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
+  imgUrl = "https://picsum.photos/seed/" + Math.floor(Math.random()*9999)+"/"+ randWidth + "/" + randHeight;
+  console.log(imgUrl);
   await getDimensions(imgUrl);
   displayImg = loadImage(imgUrl);
   adjustCanvas();
+  document.getElementById("source-link").innerHTML = imgUrl;
 }
 
 //draws an ellipse of average color between the previous and current mouse position
