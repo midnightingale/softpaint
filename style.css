@@ -3,7 +3,10 @@ body {
   text-align: center;
   font-weight: 300;
   color: #F5F5F5 ;
-  background: #434343;
+  background: rgb(34,34,34);
+background: linear-gradient(0deg, rgba(34,34,34,1) 0%, rgba(89,89,89,1) 100%);
+  background-repeat: no-repeat;
+  height: 110%;
 }
 
 h1, p{
@@ -82,7 +85,7 @@ background: linear-gradient(0deg, rgba(179,138,255,1) 0%, rgba(135,54,226,1) 100
 }
 
 #canvas-div {
-  box-shadow: 0 0px 5px grey;
+  box-shadow: 0 0px 5px black;
   margin: 10px;
   display: inline-block;
 }

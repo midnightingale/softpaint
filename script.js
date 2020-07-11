@@ -99,7 +99,7 @@ function averageColor(color1, color2) {
 }
 
 function mouseWheel(event) {
-  brushWeight += event.delta / 100;
+  brushWeight -= event.delta / 50;
   document.getElementById("instruction").innerHTML =
       "scroll brush size: "+ brushWeight + " | hover to paint";
 }
