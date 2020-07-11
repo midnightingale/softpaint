@@ -2,8 +2,10 @@
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
-let imgUrl =
-  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188";
+let imgUrl = Math.floor(Math.random()*10)
+let defaultPaintings = ["https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188"];
+    
+imgUrl=  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188";
 let canvas,
   displayImg,
   pixel,
@@ -17,8 +19,8 @@ function preload() {
 
 function setup() {
   if(windowWidth<570){ //mobile device responsiveness for default img
+    imgDimensions.h = (windowWidth-50)*(imgDimensions.h/imgDimensions.w);
     imgDimensions.w = windowWidth-50;
-    imgDimensions.h = imgDimensions.w*15/19;
   }
   
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
