@@ -2,10 +2,13 @@
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
-let imgUrl = Math.floor(Math.random()*10)
-let defaultPaintings = ["https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188"];
-    
-imgUrl=  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188";
+let imgUrl = Math.floor(Math.random() * 10);
+let defaultPaintings = [
+  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188"
+];
+
+imgUrl =
+  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188";
 
 let canvas,
   display,
@@ -19,11 +22,12 @@ function preload() {
 }
 
 function setup() {
-  if(windowWidth<570){ //mobile device responsiveness for default img
-    imgDimensions.h = (windowWidth-50)*(imgDimensions.h/imgDimensions.w);
-    imgDimensions.w = windowWidth-50;
+  if (windowWidth < 570) {
+    //mobile device responsiveness for default img
+    imgDimensions.h = (windowWidth - 50) * (imgDimensions.h / imgDimensions.w);
+    imgDimensions.w = windowWidth - 50;
   }
-  
+
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
@@ -51,15 +55,13 @@ function getDimensions(url) {
   });
 }
 
-
-
 function revealColor() {
   pixel = display.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
   pixel[3] = 10; //sets alpha to low value
   fill(pixel);
   let brushTemp = brushWeight;
-  let brushFrac = brushTemp/25; //watercolour effect
+  let brushFrac = brushTemp / 25; //watercolour effect
   /*
   if (isPainting && (pmouseX != mouseX) && (pmouseY != mouseY)) {
     
@@ -81,8 +83,6 @@ function averageColor(color1, color2) {
   return avgColor;
 }
 
-
-
 function adjustCanvas() {
   fitImage();
   resizeCanvas(imgDimensions.w, imgDimensions.h);
@@ -92,10 +92,7 @@ function adjustCanvas() {
     "height: " + imgDimensions.h - 100 + "px";
 }
 
-function fitImage(){
-  
-}
-
+function fitImage() {}
 
 //prevents black lines when mouse moves off canvas
 document
@@ -107,34 +104,32 @@ document.getElementById("canvas-div").addEventListener("mouseout", function() {
   isPainting = false;
 });
 
-
-
 /////////////////////////////////////////////////////////////
 
-function testEllipse(){
-  let locX = mouseX, locY = mouseY;
- // push();
+function testEllipse() {
+  let speedTransform = calcSpeedTransform();
   pixel[3] = 255;
- // push();
   fill(pixel);
- // translate(mouseX, mouseY);
-  let rotation = (getStrokeAngle());
-  translate(mouseX, mouseY)
+  let rotation = Math.atan2(mouseY - pmouseY, mouseX - pmouseX);
+  translate(mouseX, mouseY);
   rotate(rotation);
-  //rotate(PI/2);
-  if (isPainting && ((pmouseX != mouseX) && (pmouseY != mouseY))) {
-  ellipse(0, 0, 35, 20)}
-  //pop();
-  if(rotation!=0){
-  document.getElementById("instruction").innerHTML = rotation
-}
-  
-  //pop();
+  if (isPainting && !(pmouseX == mouseX && pmouseY == mouseY)) {
+    ellipse(0, 0, brushWeight * speedTransform, brushWeight/speedTransform);
+  }
+  if (rotation != 0) {
+    document.getElementById("instruction").innerHTML = rotation;
+  }
 }
 
-function getStrokeAngle(){
-  //return Math.atan((mouseY - pmouseY)/(mouseX - pmouseX))
-  let a = Math.atan2(mouseY - pmouseY, mouseX - pmouseX);
-  
-  return a;
+function calcSpeedTransform() {
+  let yval = Math.max((mouseY-pmouseY), 1);
+  let xval = Math.max((mouseX-pmouseX), 1);
+  let speedTransform = yval/xval/5;
+  if (speedTransform != 0) {
+    document.getElementById("instruction").innerHTML = speedTransform;
+  }
+  return speedTransform
 }
+
+/*global translate, rotate*/
+
