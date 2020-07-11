@@ -14,9 +14,9 @@ Retrives a random image to paint from picsum.photos. The image takes a second to
 
 Scrolling up and down decreases or increases the diameter of the brush.
 
-### stroke averaging
+### stroke averaging & blending
 
-For a more realistic and artistic painting experience, we averaged the RGBA values between pixels using [this method](https://sighack.com/post/averaging-rgb-colors-the-right-way). 
+For a more realistic and artistic painting experience, we averaged the RGBA values between pixels using [this method](https://sighack.com/post/averaging-rgb-colors-the-right-way). We also 
 
 
 

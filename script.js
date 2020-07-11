@@ -6,11 +6,12 @@ let imgUrl = Math.floor(Math.random()*10)
 let defaultPaintings = ["https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188"];
     
 imgUrl=  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188";
+
 let canvas,
   displayImg,
   pixel,
   isPainting = false,
-  brushWeight = 45,
+  brushWeight = 40,
   lastColor = [128, 128, 128, 20];
 
 function preload() {
@@ -49,33 +50,7 @@ function getDimensions(url) {
   });
 }
 
-//resizes canvas-div to match new image, or throws error if image is unreachable
-async function userUpload() {
-  imgUrl = window.prompt("Enter an image URL:", "[.jpg, .png, etc. from any image hosting site]");
-  await getDimensions(imgUrl);
-  displayImg = loadImage(imgUrl, null, imageError);
-  adjustCanvas();
-  document.getElementById("source-link").innerHTML = "";
-}
 
-//gets new photo from picsum.photos, with dimensions < window size
-async function randomUpload() {
-  let randWidth = Math.min(
-    Math.max(Math.floor(Math.random() * (windowWidth-50)), 300),
-    windowWidth-50
-  );
-  let randHeight = Math.min(
-    Math.max(Math.floor(Math.random() * (windowHeight-200)), 450),
-    windowHeight-200
-  );
-  imgUrl = "https://picsum.photos/seed/" + Math.floor(Math.random()*9999)+"/"+ randWidth + "/" + randHeight;
-  console.log(imgUrl);
-  await getDimensions(imgUrl);
-  displayImg = loadImage(imgUrl);
-  adjustCanvas();
-  document.getElementById("source-link").innerHTML = "view source";
-  document.getElementById("source-link").href = imgUrl;
-}
 
 //draws an ellipse of average color between the previous and current mouse position
 function revealColor() {
@@ -104,11 +79,7 @@ function averageColor(color1, color2) {
   return avgColor;
 }
 
-function mouseWheel(event) {
-  brushWeight -= event.delta / 50;
-  document.getElementById("instruction").innerHTML =
-      "scroll brush size: "+ brushWeight + " | hover to paint";
-}
+
 
 function adjustCanvas() {
   resizeCanvas(imgDimensions.w, imgDimensions.h);
@@ -118,14 +89,13 @@ function adjustCanvas() {
     "height: " + imgDimensions.h - 100 + "px";
 }
 
-function imageError() {
-    document.getElementById("error-display").innerHTML =
-      "Sorry, we couldn't load that image. Try another!";
-  };
 
-function savePainting(){
-  saveCanvas('mySoftpoints', 'png');
+
+
+function fitImage(){
+  
 }
+
 
 //prevents black lines when mouse moves off canvas
 document
