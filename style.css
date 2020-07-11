@@ -23,6 +23,9 @@ h1,
 p {
   margin: 0;
 }
+a{
+  color: rgba(29, 135, 255, 1);
+}
 
 .container {
   display: flex;

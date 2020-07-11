@@ -73,7 +73,8 @@ async function randomUpload() {
   await getDimensions(imgUrl);
   displayImg = loadImage(imgUrl);
   adjustCanvas();
-  document.getElementById("source-link").innerHTML = imgUrl;
+  document.getElementById("source-link").innerHTML = "view source";
+  document.getElementById("source-link").href = imgUrl;
 }
 
 //draws an ellipse of average color between the previous and current mouse position
