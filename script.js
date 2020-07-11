@@ -32,6 +32,7 @@ function setup() {
 
 function draw() {
   revealColor();
+  testEllipse();
 }
 
 /*images take time to load, so this function returns a Promise that 
@@ -59,16 +60,16 @@ function revealColor() {
   fill(pixel);
   let brushTemp = brushWeight;
   let brushFrac = brushTemp/25; //watercolour effect
-  
+  /*
   if (isPainting && (pmouseX != mouseX) && (pmouseY != mouseY)) {
-    push();
+    
     rotate(getStrokeAngle());
+    translate(mouseX, mouseY)
     for(let i=0; i<15; i++){
     brushTemp -= brushFrac; 
     ellipse(mouseX, mouseY, brushTemp, 4);
     }
-    pop();
-  }
+  }*/
   lastColor = pixel;
 }
 
@@ -80,9 +81,7 @@ function averageColor(color1, color2) {
   return avgColor;
 }
 
-function getStrokeAngle(){
-  return Math.atan((mouseY - pmouseY)/(mouseX - pmouseX))
-}
+
 
 function adjustCanvas() {
   fitImage();
@@ -92,9 +91,6 @@ function adjustCanvas() {
   document.getElementById("canvas-div").style =
     "height: " + imgDimensions.h - 100 + "px";
 }
-
-
-
 
 function fitImage(){
   
@@ -110,3 +106,24 @@ document
 document.getElementById("canvas-div").addEventListener("mouseout", function() {
   isPainting = false;
 });
+
+
+
+/////////////////////////////////////////////////////////////
+
+function testEllipse(){
+  pixel[3] = 255;
+  fill(pixel);
+  console.log("angle:" + getStrokeAngle());
+  
+  rotate(getStrokeAngle()* -1);
+  translate(mouseX, mouseY);
+  ellipse(mouseX, mouseY, 35, 20)
+
+}
+
+function getStrokeAngle(){
+  //return Math.atan((mouseY - pmouseY)/(mouseX - pmouseX))
+  let a = atan2(mouseY - pmouseY, mouseX - pmouseX);
+  return a;
+}
