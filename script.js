@@ -73,8 +73,7 @@ function revealColor() {
   rotate(rotation);
 
   for (let i = 0; i < 15; i++) {
-    
-    ellipse(0, 0, brushTemp * speedTransform[0], brushTemp*speedTransform[1]/*cross axis*/); 
+    ellipse(0, 0, brushTemp*speedTransform[0], brushTemp*speedTransform[1]/*cross axis*/); 
     brushTemp -= brushFrac;
   }
 
@@ -87,7 +86,7 @@ function calcSpeedTransform() {
   let yval = Math.max(mouseY - pmouseY, 1);
   let xval = Math.max(mouseX - pmouseX, 1);
   let speedTransform = Math.sqrt(sq(yval) + sq(xval)) / 10;
-  return [Math.max(speedTransform/2, 1), Math.min(1/speedTransform, 1)];
+  return [Math.max(1/(speedTransform+0.5)+1, 1), Math.min(1/speedTransform, 1)];
 }
 
 
