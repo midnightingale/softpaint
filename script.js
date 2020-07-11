@@ -60,12 +60,12 @@ async function userUpload() {
 //gets new photo from picsum.photos, with dimensions < window size
 async function randomUpload() {
   let randWidth = Math.min(
-    Math.max(Math.floor(Math.random() * windowWidth), 150),
-    windowWidth
+    Math.max(Math.floor(Math.random() * (windowWidth-50)), 200),
+    windowWidth-50
   );
   let randHeight = Math.min(
-    Math.max(Math.floor(Math.random() * windowHeight), 200),
-    windowHeight
+    Math.max(Math.floor(Math.random() * (windowHeight-200)), 250),
+    windowHeight-200
   );
   imgUrl = "https://picsum.photos/" + randWidth + "/" + randHeight;
   await getDimensions(imgUrl);
