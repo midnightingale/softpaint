@@ -1,4 +1,4 @@
-/* global createCanvas, cursor, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -70,9 +70,17 @@ async function randomUpload() {
 function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
+  pixel[3] = 5;
   stroke(pixel);
+  
   if (isPainting) {
+    for(let i=0; i<5; i++){
+    pixel[3] += 50;
+    let brushTemp = brushWeight;
+    brushTemp-=3;
+    strokeWeight(brushTemp);
     line(pmouseX, pmouseY, mouseX, mouseY);
+    }
   }
   lastColor = pixel;
 }
@@ -101,10 +109,12 @@ function adjustCanvas() {
 
 function imageError() {
     document.getElementById("error-display").innerHTML =
-      "Image pending (or retrieval failed...)";
+      "Image pending (or retrieval failed)...";
   };
 
-
+function savePainting(){
+  saveCanvas('myPainting', 'png');
+}
 
 //prevents black lines when mouse moves off canvas
 document
