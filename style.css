@@ -9,6 +9,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .button{
@@ -19,7 +21,7 @@ body {
   width: 9em;
   top: -1vh;
   padding: 3px;
-  margin: 3px auto;
+  margin: 3px ;
   outline: none;
   position: relative;
 }

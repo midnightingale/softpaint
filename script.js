@@ -24,7 +24,7 @@ function setup() {
 function draw() {
   revealColor();
   if(onCanvas){
-    cursor()
+    cursor('https://s3.amazonaws.com/mupublicdata/cursor.cur')
   }
 }
 
@@ -55,7 +55,7 @@ async function userUpload() {
   adjustCanvas();
 }
 
-//gets new photo from picsum.photos
+//gets new photo from picsum.photos, with dimensions < window size
 async function randomUpload() {
   let randWidth = Math.min(Math.max(Math.floor(Math.random() * windowWidth), 150), windowWidth);
   let randHeight = Math.min(Math.max(Math.floor(Math.random() * windowHeight), 200), windowHeight);
