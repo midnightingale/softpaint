@@ -54,14 +54,37 @@ function getDimensions(url) {
     };
   });
 }
+/////////////////////////////////////////////////////////////
 
+function testEllipse() {
+  let speedTransform = calcSpeedTransform();
+  
+  translate(mouseX, mouseY);
+  rotate(rotation);
+  if (isPainting && !(pmouseX == mouseX && pmouseY == mouseY)) {
+    ellipse(0, 0, brushWeight * speedTransform, 30);
+  }
+ 
+}
+
+function calcSpeedTransform() {
+  let yval = Math.max((mouseY-pmouseY), 1);
+  let xval = Math.max((mouseX-pmouseX), 1);
+  let speedTransform = Math.sqrt(sq(yval) + sq(xval))/10;
+  if (speedTransform >1.0) {
+    document.getElementById("instruction").innerHTML = speedTransform;
+  }
+  return Math.max(speedTransform, 1);
+}
+
+/*global translate, rotate*/
 function revealColor() {
-  pixel = display.get(mouseX, mouseY); //}
+  pixel = display.get(mouseX, mouseY); 
   pixel = averageColor(pixel, lastColor);
-  pixel[3] = 10; //sets alpha to low value
+  pixel[3] = 10; //sets alpha to low value for watercolor effect
   fill(pixel);
   let brushTemp = brushWeight;
-  let brushFrac = brushTemp / 25; //watercolour effect
+  let brushFrac = brushTemp / 25; 
   /*
   if (isPainting && (pmouseX != mouseX) && (pmouseY != mouseY)) {
     
@@ -104,32 +127,5 @@ document.getElementById("canvas-div").addEventListener("mouseout", function() {
   isPainting = false;
 });
 
-/////////////////////////////////////////////////////////////
 
-function testEllipse() {
-  let speedTransform = calcSpeedTransform();
-  pixel[3] = 255;
-  fill(pixel);
-  let rotation = Math.atan2(mouseY - pmouseY, mouseX - pmouseX);
-  translate(mouseX, mouseY);
-  rotate(rotation);
-  if (isPainting && !(pmouseX == mouseX && pmouseY == mouseY)) {
-    ellipse(0, 0, brushWeight * speedTransform, brushWeight/speedTransform);
-  }
-  if (rotation != 0) {
-    document.getElementById("instruction").innerHTML = rotation;
-  }
-}
-
-function calcSpeedTransform() {
-  let yval = Math.max((mouseY-pmouseY), 1);
-  let xval = Math.max((mouseX-pmouseX), 1);
-  let speedTransform = yval/xval/5;
-  if (speedTransform != 0) {
-    document.getElementById("instruction").innerHTML = speedTransform;
-  }
-  return speedTransform
-}
-
-/*global translate, rotate*/
 
