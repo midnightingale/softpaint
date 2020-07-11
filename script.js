@@ -14,7 +14,7 @@ let canvas,
   display,
   pixel,
   isPainting = false,
-  brushWeight = 30,
+  brushWeight,
   lastColor = [128, 128, 128, 20];
 
 function preload() {
@@ -31,6 +31,7 @@ function setup() {
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
+  brushWeight = imgDimensions.h/5;
   noStroke();
 }
 
@@ -61,18 +62,18 @@ function getDimensions(url) {
 function revealColor() {
   pixel = display.get(mouseX, mouseY);
   pixel = averageColor(pixel, lastColor);
-  pixel[3] = 12; //sets alpha to low value for watercolor effect
+  pixel[3] = 5; //sets alpha to low value for watercolor effect
   fill(pixel);
   
-  let brushTemp = brushWeight;
-  let brushFrac = brushTemp / 25;
   let speedTransform = calcSpeedTransform();
   let rotation = Math.atan2(mouseY - pmouseY, mouseX - pmouseX);
+  let brushTemp = brushWeight;
+  let brushFrac = brushTemp / 25;
   
   translate(mouseX, mouseY);
   rotate(rotation);
 
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 15; i++) { //layering for watercolor effect
     ellipse(0, 0, brushTemp*speedTransform[0], brushTemp*speedTransform[1]/*cross axis*/); 
     brushTemp -= brushFrac;
   }
@@ -86,7 +87,7 @@ function calcSpeedTransform() {
   let yval = Math.max(mouseY - pmouseY, 1);
   let xval = Math.max(mouseX - pmouseX, 1);
   let speedTransform = Math.sqrt(sq(yval) + sq(xval)) / 10;
-  return [Math.max(1/(speedTransform+0.5)+1, 1), Math.min(1/speedTransform, 1)];
+  return [Math.min(-1/(speedTransform+0.5)+1, 2), Math.min(1/5*(speedTransform+0.5), 2)];
 }
 
 
