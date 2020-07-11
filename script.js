@@ -60,11 +60,14 @@ function revealColor() {
   let brushTemp = brushWeight;
   let brushFrac = brushTemp/25; //watercolour effect
   
-  if (isPainting && (pmouseX != mouseX) && (pmouseY != mouseY) ) {
+  if (isPainting && (pmouseX != mouseX) && (pmouseY != mouseY)) {
+    push();
+    rotate(getStrokeAngle());
     for(let i=0; i<15; i++){
-    brushTemp -= brushFrac ; 
-    ellipse(mouseX, mouseY, brushTemp);
+    brushTemp -= brushFrac; 
+    ellipse(mouseX, mouseY, brushTemp, 4);
     }
+    pop();
   }
   lastColor = pixel;
 }
@@ -77,9 +80,12 @@ function averageColor(color1, color2) {
   return avgColor;
 }
 
-
+function getStrokeAngle(){
+  return Math.atan((mouseY - pmouseY)/(mouseX - pmouseX))
+}
 
 function adjustCanvas() {
+  fitImage();
   resizeCanvas(imgDimensions.w, imgDimensions.h);
   document.getElementById("canvas-div").style =
     "width: " + imgDimensions.w + "px";
