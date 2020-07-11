@@ -1,4 +1,4 @@
-/* global createCanvas, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -8,7 +8,7 @@ let canvas,
   displayImg,
   pixel,
   isPainting = false,
-  brushWeight = 20,
+  brushWeight = 45,
   lastColor = [128, 128, 128, 20];
 
 function preload() {
@@ -18,7 +18,7 @@ function preload() {
 function setup() {
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
-  strokeWeight(brushWeight);
+  noStroke();
 }
 
 function draw() {
@@ -71,17 +71,14 @@ function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
   pixel[3] = 10;
-  stroke(pixel);
+  fill(pixel);
   let brushTemp = brushWeight;
-  let brushFrac = brushTemp/25;
+  let brushFrac = brushTemp/25; //watercolour effect
   
   if (isPainting) {
     for(let i=0; i<15; i++){
-    
-    brushTemp -= brushFrac ;
-      console.log(brushTemp)
-    strokeWeight(brushTemp);
-    line(pmouseX, pmouseY, mouseX, mouseY);
+    brushTemp -= brushFrac ; 
+    ellipse(mouseX, mouseY, brushTemp);
     }
   }
   lastColor = pixel;
