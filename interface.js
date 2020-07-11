@@ -2,7 +2,7 @@
 async function userUpload() {
   imgUrl = window.prompt("Enter an image URL:", "[.jpg, .png, etc. from any image hosting site]");
   await getDimensions(imgUrl);
-  displayImg = loadImage(imgUrl, null, imageError);
+  display = loadImage(imgUrl, null, imageError);
   adjustCanvas();
   document.getElementById("source-link").innerHTML = "";
 }
@@ -20,7 +20,7 @@ async function randomUpload() {
   imgUrl = "https://picsum.photos/seed/" + Math.floor(Math.random()*9999)+"/"+ randWidth + "/" + randHeight;
 
   await getDimensions(imgUrl);
-  displayImg = loadImage(imgUrl);
+  display = loadImage(imgUrl);
   adjustCanvas();
   document.getElementById("source-link").innerHTML = "view source";
   document.getElementById("source-link").href = imgUrl;
@@ -37,9 +37,10 @@ function savePainting(){
 
 function mouseWheel(event) {
   brushWeight -= event.delta / 50;
+  brushWeight = abs(brushWeight);
   document.getElementById("instruction").innerHTML =
       "scroll brush size: "+ brushWeight + " | hover to paint";
 }
 
 
-/* global createCanvas, brushWeight, displayImg, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, brushWeight, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/

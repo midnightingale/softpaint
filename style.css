@@ -49,7 +49,7 @@ a{
 }
 
 .button:hover {
-  box-shadow: 0 0px 3px teal;
+  box-shadow: 0 0px 3px #CCCCCC;
 }
 
 #user-upload {

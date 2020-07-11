@@ -8,14 +8,14 @@ let defaultPaintings = ["https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7a
 imgUrl=  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188";
 
 let canvas,
-  displayImg,
+  display,
   pixel,
   isPainting = false,
   brushWeight = 40,
   lastColor = [128, 128, 128, 20];
 
 function preload() {
-  displayImg = loadImage(imgUrl);
+  display = loadImage(imgUrl);
 }
 
 function setup() {
@@ -52,11 +52,10 @@ function getDimensions(url) {
 
 
 
-//draws an ellipse of average color between the previous and current mouse position
 function revealColor() {
-  pixel = displayImg.get(mouseX, mouseY); //}
+  pixel = display.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
-  pixel[3] = 10;
+  pixel[3] = 10; //sets alpha to low value
   fill(pixel);
   let brushTemp = brushWeight;
   let brushFrac = brushTemp/25; //watercolour effect
@@ -70,7 +69,6 @@ function revealColor() {
   lastColor = pixel;
 }
 
-//calculates the average color between two RGBA values using a squared-mean method
 function averageColor(color1, color2) {
   let avgColor = [];
   for (let i = 0; i < lastColor.length; i++) {
