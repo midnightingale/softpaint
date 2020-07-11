@@ -113,20 +113,23 @@ document.getElementById("canvas-div").addEventListener("mouseout", function() {
 
 function testEllipse(){
   let locX = mouseX, locY = mouseY;
-  push();
+ // push();
   pixel[3] = 255;
  // push();
   fill(pixel);
  // translate(mouseX, mouseY);
-  let rotation = (getStrokeAngle()* -1;
+  let rotation = (getStrokeAngle());
+  translate(mouseX, mouseY)
   rotate(rotation);
   //rotate(PI/2);
-  ellipse(locX, locY, 20, 35)
+  if (isPainting && ((pmouseX != mouseX) && (pmouseY != mouseY))) {
+  ellipse(0, 0, 35, 20)}
   //pop();
+  if(rotation!=0){
   document.getElementById("instruction").innerHTML = rotation
+}
   
-  
-  pop();
+  //pop();
 }
 
 function getStrokeAngle(){
