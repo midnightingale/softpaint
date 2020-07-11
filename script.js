@@ -1,4 +1,4 @@
-/* global createCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, translate, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -14,7 +14,7 @@ let canvas,
   display,
   pixel,
   isPainting = false,
-  brushWeight = 40,
+  brushWeight = 30,
   lastColor = [128, 128, 128, 20];
 
 function preload() {
@@ -35,8 +35,9 @@ function setup() {
 }
 
 function draw() {
-  revealColor();
-  testEllipse();
+  if (isPainting && pmouseX != mouseX && pmouseY != mouseY) {
+    revealColor();
+  }
 }
 
 /*images take time to load, so this function returns a Promise that 
@@ -54,49 +55,41 @@ function getDimensions(url) {
     };
   });
 }
-/////////////////////////////////////////////////////////////
 
-function testEllipse() {
+
+
+function revealColor() {
+  pixel = display.get(mouseX, mouseY);
+  pixel = averageColor(pixel, lastColor);
+  pixel[3] = 12; //sets alpha to low value for watercolor effect
+  fill(pixel);
+  
+  let brushTemp = brushWeight;
+  let brushFrac = brushTemp / 25;
   let speedTransform = calcSpeedTransform();
+  let rotation = Math.atan2(mouseY - pmouseY, mouseX - pmouseX);
   
   translate(mouseX, mouseY);
   rotate(rotation);
-  if (isPainting && !(pmouseX == mouseX && pmouseY == mouseY)) {
-    ellipse(0, 0, brushWeight * speedTransform, 30);
+
+  for (let i = 0; i < 15; i++) {
+    
+    ellipse(0, 0, brushTemp /speedTransform, brushTemp*speedTransform/*cross axis*/); 
+    brushTemp -= brushFrac;
   }
- 
+
+  lastColor = pixel;
 }
 
+
+
 function calcSpeedTransform() {
-  let yval = Math.max((mouseY-pmouseY), 1);
-  let xval = Math.max((mouseX-pmouseX), 1);
-  let speedTransform = Math.sqrt(sq(yval) + sq(xval))/10;
-  if (speedTransform >1.0) {
-    document.getElementById("instruction").innerHTML = speedTransform;
-  }
+  let yval = Math.max(mouseY - pmouseY, 1);
+  let xval = Math.max(mouseX - pmouseX, 1);
+  let speedTransform = Math.sqrt(sq(yval) + sq(xval)) / 10;
   return Math.max(speedTransform, 1);
 }
 
-/*global translate, rotate*/
-function revealColor() {
-  pixel = display.get(mouseX, mouseY); 
-  pixel = averageColor(pixel, lastColor);
-  pixel[3] = 10; //sets alpha to low value for watercolor effect
-  fill(pixel);
-  let brushTemp = brushWeight;
-  let brushFrac = brushTemp / 25; 
-  /*
-  if (isPainting && (pmouseX != mouseX) && (pmouseY != mouseY)) {
-    
-    rotate(getStrokeAngle());
-    translate(mouseX, mouseY)
-    for(let i=0; i<15; i++){
-    brushTemp -= brushFrac; 
-    ellipse(mouseX, mouseY, brushTemp, 4);
-    }
-  }*/
-  lastColor = pixel;
-}
 
 function averageColor(color1, color2) {
   let avgColor = [];
@@ -126,6 +119,3 @@ document
 document.getElementById("canvas-div").addEventListener("mouseout", function() {
   isPainting = false;
 });
-
-
-
