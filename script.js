@@ -66,7 +66,7 @@ async function randomUpload() {
   adjustCanvas();
 }
 
-//draws a line based on pmouse{X,Y} and mouse{X,Y} of the average color between the two points
+//draws an ellipse based on pmouse{X,Y} and mouse{X,Y} of the average color between the two points
 function revealColor() {
   pixel = displayImg.get(mouseX, mouseY); //}
   pixel = averageColor(pixel, lastColor);
