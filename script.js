@@ -96,7 +96,6 @@ function calcSpeedTransform() {
   let yval = Math.max(mouseY - pmouseY, 0.5); //ensure no division by 0
   let xval = Math.max(mouseX - pmouseX, 0.5);
   let speed = Math.min(Math.max(Math.sqrt(sq(yval) + sq(xval)),1),40) ; //restricted between [1,40]
-  console.log(speed + 'speed')
   if (speed>= 40){
     return [2, 0.5];
   }
