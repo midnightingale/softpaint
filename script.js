@@ -27,6 +27,7 @@ function preload() {
 
 function setup() {
   getDimensions(imgUrl);
+  
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
