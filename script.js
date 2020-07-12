@@ -83,8 +83,8 @@ function revealColor() {
 
 
 function calcSpeedTransform() {
-  let yval = Math.max(mouseY - pmouseY, 1);
-  let xval = Math.max(mouseX - pmouseX, 1);
+  let yval = Math.max(mouseY - pmouseY, 0.1);
+  let xval = Math.max(mouseX - pmouseX, 0.1);
   let speedTransform = Math.sqrt(sq(yval) + sq(xval)) / 10;
   return [1/(speedTransform+0.5)+1, Math.min(-1/(speedTransform+2)+1, 1)];
 }
