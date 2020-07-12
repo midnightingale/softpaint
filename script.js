@@ -71,13 +71,15 @@ function revealColor() {
   let brushFrac = brushTemp / 20;
   let speedTransform = calcSpeedTransform();
   let rotation = Math.atan2(mouseY - pmouseY, mouseX - pmouseX);
+  let mainAxis, crossAxis;
   
   translate(mouseX, mouseY);
   rotate(rotation);
   console.log(brushTemp*speedTransform[0], brushTemp*speedTransform[1]);//
   for (let i = 0; i < 15; i++) { //layering for watercolor effect
-    ellipse(0, 0, brushTemp*speedTransform[0], brushTemp*speedTransform[1]/*cross axis*/); 
-    
+    mainAxis = Math.min(Math.max(brushTemp*speedTransform[0],5),brushTemp*2);
+    crossAxis = Math.min(Math.max(brushTemp*speedTransform[1],5),brushTemp/2);
+    ellipse(0, 0, mainAxis, crossAxis); 
     brushTemp -= brushFrac;
   }
   lastColor = pixel;
@@ -88,12 +90,12 @@ function revealColor() {
 function calcSpeedTransform() {
   let yval = Math.max(mouseY - pmouseY, 0.5);
   let xval = Math.max(mouseX - pmouseX, 0.5);
-  let speed = Math.min(Math.max(Math.sqrt(sq(yval) + sq(xval)),1),30) ;
+  let speed = Math.min(Math.max(Math.sqrt(sq(yval) + sq(xval)),1),40) ;
   console.log(speed + 'speed')
-  if (speed>= 30){
+  if (speed>= 40){
     return [1, 0.5];
   }
-  return [-3/(speed-30)+1, Math.min(3/(speed-30)+1, 1)];
+  return [-3/(speed-40)+1, Math.min(3/(speed-40)+1, 1)];
 }
 
 
