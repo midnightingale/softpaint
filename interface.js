@@ -54,5 +54,11 @@ function displayBrushSize(){
     "scroll brush size: " + brushWeight + " | hover to paint";
 }
 
+function drawMobilePrompt(){
+  fill(120)
+    rectMode(CENTER);
+    textAlign(CENTER);
+    text('tap canvas to start', imgDimensions.w/2, imgDimensions.h/2)
+}
 
-/* global createCanvas, brushWeight, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, rectMode, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/

@@ -1,4 +1,4 @@
-/* global createCanvas, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, textAlign, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -14,6 +14,7 @@ let canvas,
   display,
   pixel,
   isPainting = false,
+  notStarted = true,
   brushWeight = 30,
   lastColor = [128, 128, 128, 20];
 
@@ -40,10 +41,9 @@ function setup() {
 function draw() {
   if (isPainting && pmouseX != mouseX && pmouseY != mouseY) {
     revealColor();
-  } else{
-    fill(0)
-    text('tap canvas to start', windowWidth/3-50, windowHeight/3, 50, 20)
-    console.log('unstarted')
+  }
+  if (notStarted){
+    drawMobilePrompt();
   }
 }
 
@@ -57,6 +57,7 @@ function getDimensions(url) {
       imgDimensions.h = this.height;
       adjustCanvas();
       document.getElementById("error-display").innerHTML = "";
+      background(235);
       resolve();
     };
   });
@@ -126,6 +127,10 @@ document
   .getElementById("canvas-div")
   .addEventListener("mouseenter", function() {
     isPainting = true;
+    if(notStarted){
+      notStarted = false;
+      background(235);   
+    }
   });
 document.getElementById("canvas-div").addEventListener("mouseout", function() {
   isPainting = false;
