@@ -19,8 +19,14 @@ Scrolling up and down or using the slider changes the diameter of the brush.
 For a more realistic and artistic painting experience, I averaged the RGBA values between pixels using [this method](https://sighack.com/post/averaging-rgb-colors-the-right-way). 
 I also layered several strokes with different widths and low alpha values to create the watercolor effect.
 
+### speed-based ellipse transformations
+p5's transform(), rotate(), and Math.atan2() are used to calculate the mouse angle and rotate the brush to match.
+Also, faster strokes create thinner ellipses!
+
+### image upload and sizing
+Images are dynamically sized based on the user's screen
+
 ### features in progress
-☒ speed-based ellipse transformations  
 ☒ upload image from device  
 ☒ responsive resizing of uploaded or linked images  
 ☐ fetch images from Unsplash using "sig=" instead of Picsum  
