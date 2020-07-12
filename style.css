@@ -61,7 +61,7 @@ background: linear-gradient(0deg, rgba(217,125,148,1) 0%, rgba(237,159,159,1) 10
 #user-uploader:active {
   background: linear-gradient(
     0deg,
-    rgba(32, 233, 205, 1) 0%,
+    rgba(237,159,159,1) 0%,
     rgba(217,125,148,1) 100%
   );
 }
@@ -74,8 +74,8 @@ background: linear-gradient(0deg, rgba(170,126,200,1) 0%, rgba(217,159,237,1) 10
 #random-link:active {
   background: linear-gradient(
     0deg,
-    rgba(35, 197, 240, 1) 0%,
-    rgba(29, 135, 255, 1) 100%
+    rgba(217,159,237,1) 0%,
+    rgba(170,126,200,1) 100%
   );
 }
 
@@ -89,8 +89,8 @@ background: linear-gradient(0deg, rgba(119,112,194,1) 0%, rgba(141,163,228,1) 10
   background: rgba(135, 54, 226, 1);
   background: linear-gradient(
     0deg,
-    rgba(179, 138, 255, 1) 0%,
-    rgba(135, 54, 226, 1) 100%
+    rgba(141,163,228,1) 0%,
+    rgba(119,112,194,1) 100%
   );
 }
 
