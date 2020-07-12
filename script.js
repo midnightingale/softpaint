@@ -57,7 +57,6 @@ function getDimensions(url) {
       imgDimensions.h = this.height;
       adjustCanvas();
       document.getElementById("error-display").innerHTML = "";
-      background(235);
       resolve();
     };
   });
@@ -114,6 +113,7 @@ function averageColor(color1, color2) {
 function adjustCanvas() {
   fitImage();
   resizeCanvas(imgDimensions.w, imgDimensions.h);
+  background(235);
   document.getElementById("canvas-div").style =
     "width: " + imgDimensions.w + "px";
   document.getElementById("canvas-div").style =

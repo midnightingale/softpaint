@@ -47,18 +47,26 @@ function savePainting() {
 function mouseWheel(event) {
   brushWeight -= event.delta / 50;
   brushWeight = abs(brushWeight);
+  displayBrushSize();
+}
+
+function updateSlider(amount){
+  brushWeight = amount;
+  displayBrushSize();
 }
 
 function displayBrushSize(){
   document.getElementById("instruction").innerHTML =
-    "scroll brush size: " + brushWeight + " | hover to paint";
+    "scroll brush size: " + brushWeight ;
 }
 
 function drawMobilePrompt(){
-  fill(120)
-    rectMode(CENTER);
-    textAlign(CENTER);
-    text('tap canvas to start', imgDimensions.w/2, imgDimensions.h/2)
+  fill(120);
+  textSize(16);
+  rectMode(CENTER);
+    textAlign(CENTER, CENTER);
+  
+    text('touch to start', imgDimensions.w/2, imgDimensions.h/2)
 }
 
 /* global createCanvas, rectMode, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
