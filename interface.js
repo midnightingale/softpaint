@@ -43,7 +43,7 @@ async function randomLink() {
   );
   let randHeight = Math.min(
     Math.max(Math.floor(Math.random() * (windowHeight - 200)), 450),
-    windowHeight - 200
+    windowHeight - 230
   );
   imgUrl =
     "https://picsum.photos/seed/" +

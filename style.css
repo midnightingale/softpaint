@@ -24,7 +24,7 @@ p {
   margin: 0;
 }
 a{
-  color: rgba(29, 135, 255, 1);
+  color: rgba(42, 201, 235, 1);
 }
 
 .container {
@@ -52,7 +52,7 @@ a{
   box-shadow: 0 0px 3px #CCCCCC;
 }
 
-#user-link {
+#user-uploader {
   color: #FFFFFF;
   background: linear-gradient(
     0deg,
@@ -61,7 +61,7 @@ a{
   );
 }
 
-#user-link:active {
+#user-uploader:active {
   background: linear-gradient(
     0deg,
     rgba(32, 233, 205, 1) 0%,
@@ -108,7 +108,7 @@ a{
 
 #canvas-div {
   box-shadow: 0 0px 9px #FFFFFF;
-  margin: 10px 0px 10px 0px ;
+  margin: 5px 0px 0px 0px ;
   display: inline-block;
   line-height: 0;
 }
@@ -119,8 +119,9 @@ a{
 }
 
 #slider{
-  margin: 20px 0 0 0;
-  width: 60%;
+  margin: 15px 0 0 0;
+  min-width: 60%;
+  max-width: 300px;
 }
 
 #test{

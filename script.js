@@ -90,7 +90,6 @@ function revealColor() {
 }
 
 
-
 function calcSpeedTransform() {
   let yval = Math.max(mouseY - pmouseY, 0.5); //ensure no division by 0
   let xval = Math.max(mouseX - pmouseX, 0.5);
@@ -120,8 +119,22 @@ function adjustCanvas() {
     imgDimensions.h - 100 + "px";
 }
 
-function fitImage(){}
-
+function fitImage(){
+  let minDim = Math.min(windowWidth, windowHeight);
+  if (windowWidth <= windowHeight){
+    
+  }
+  else if (windowWidth > windowHeight){
+    
+  }
+}
+/*
+if (windowWidth < 570) {
+    //mobile device responsiveness for default img
+    imgDimensions.h = (windowWidth - 50) * (imgDimensions.h / imgDimensions.w);
+    imgDimensions.w = windowWidth - 50;
+  }
+*/
 
 //prevents black lines when mouse moves off canvas
 document
