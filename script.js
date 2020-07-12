@@ -32,7 +32,7 @@ function setup() {
   canvas.parent("canvas-div");
   background(235);
   
-  brushWeight = Math.floor(windowWidth/15)
+  brushWeight = Math.floor(windowWidth/10)
   updateSizeDisplay();
   noStroke();
 }
@@ -88,7 +88,7 @@ function revealColor() {
 function calcSpeedTransform() {
   let yval = Math.max(mouseY - pmouseY, 0.5);
   let xval = Math.max(mouseX - pmouseX, 0.5);
-  let speed = Math.min(Math.max(Math.sqrt(sq(yval) + sq(xval)),1),50) ;
+  let speed = Math.min(Math.max(Math.sqrt(sq(yval) + sq(xval)),1),30) ;
   console.log(speed + 'speed')
   if (speed>= 30){
     return [1, 0.5];
