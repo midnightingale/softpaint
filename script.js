@@ -1,14 +1,13 @@
 /* global createCanvas,drawTouchPrompt,loadFont,textAlign, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
-let imgDimensions = { w: 570, h: 450 };
+let imgDimensions = { w: 0, h: 0 };
 let imgUrl = Math.floor(Math.random() * 10);
 let defaultPaintings = [
   "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188"
 ];
 
-imgUrl =
-  "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188";
+imgUrl = defaultPaintings[Math.floor(Math.random()*defaultPaintings.length)];
 
 let canvas,
   display,
@@ -27,12 +26,7 @@ function preload() {
 }
 
 function setup() {
-  if (windowWidth < 570) {
-    //mobile device responsiveness for default img
-    imgDimensions.h = (windowWidth - 50) * (imgDimensions.h / imgDimensions.w);
-    imgDimensions.w = windowWidth - 50;
-  }
-
+  getDimensions(imgUrl);
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
