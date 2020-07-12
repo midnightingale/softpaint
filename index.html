@@ -26,11 +26,8 @@
     <h1>
       softpaint
     </h1>
-    <p id="instruction">
-      scroll brush size: 45  | hover to paint <br />
-      <p>
-        tap canvas to start on mobile
-    </p>
+    <p>
+      tap canvas to start on mobile
     </p>
     <div id="error-display"></div>
     <div class="container">
@@ -46,11 +43,18 @@
     </div>
 
     <div id="canvas-div"></div>
-  <div>
-    
-  <a href="url" target="blank" id="source-link">
-    
-  </a>
-  </div>
-    </body>
+    <div>
+      <input
+        id="slider"
+        type="range"
+        min="1"
+        max="100"
+        step="1"
+        value="10"
+        onchange="updateSlider(this.value)"
+      />
+      <p id="instruction">scroll brush size: 45 | hover to paint <br /></p>
+      <a href="url" target="blank" id="source-link"> </a>
+    </div>
+  </body>
 </html>

@@ -1,4 +1,4 @@
-/* global createCanvas,createSlider, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -13,7 +13,6 @@ imgUrl =
 let canvas,
   display,
   pixel,
-  brushWeightSlider,
   isPainting = false,
   brushWeight = 30,
   lastColor = [128, 128, 128, 20];
@@ -32,7 +31,6 @@ function setup() {
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
-  brushWeightSlider = createSlider(0, 255, 100);
   
   brushWeight = Math.floor(windowWidth/15)
   displayBrushSize();
@@ -40,9 +38,12 @@ function setup() {
 }
 
 function draw() {
-  brushWeight = 
   if (isPainting && pmouseX != mouseX && pmouseY != mouseY) {
     revealColor();
+  } else{
+    fill(0)
+    text('tap canvas to start', windowWidth/3-50, windowHeight/3, 50, 20)
+    console.log('unstarted')
   }
 }
 
