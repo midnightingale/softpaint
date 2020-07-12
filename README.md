@@ -30,4 +30,4 @@ We also layered several strokes with different widths and low alpha values to cr
 
 -------------------
 
-made by Sophie Liu & Jason Alvarez
+made by Sophie Liu
