@@ -23,6 +23,7 @@ We also layered several strokes with different widths and low alpha values to cr
 - speed-based ellipse transformations
 - upload from device (move save button to bottom, new top row -> Link | Upload | Random)
 - responsive resizing of uploaded or linked images
+- fetch images from Unsplash using "sig=" instead of Picsum
 
 
 
