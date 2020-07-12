@@ -49,9 +49,9 @@ function savePainting() {
 }
 
 function mouseWheel(event) {
-  if(brushWeight >= 1){
-    brushWeight -= Math.floor(event.delta / 50);
-  }
+  
+    brushWeight -= Math.floor(event.delta/50);
+    brushWeight = abs(brushWeight);
   displayBrushSize();
 }
 
@@ -76,8 +76,6 @@ function drawTouchPrompt() {
   text("touch to start", imgDimensions.w / 2, imgDimensions.h / 2);
 }
 
-/* global createCanvas, fitImage, textSize, rectMode, jost, textFont, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
-
 //deprecated
 async function userLink() {
   imgUrl = window.prompt("Enter an image URL:", ".jpg, .png, etc.");
@@ -85,3 +83,5 @@ async function userLink() {
   display = loadImage(imgUrl, null, imageError);
   document.getElementById("source-link").innerHTML = "";
 }
+
+/* global createCanvas, fitImage, textSize, rectMode, jost, textFont, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
