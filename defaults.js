@@ -11,7 +11,6 @@ let defaultPaintings = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Sunrise_on_the_Matterhorn_MET_DT218107.jpg/800px-Sunrise_on_the_Matterhorn_MET_DT218107.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Albert_Bierstadt_-_Mount_Corcoran.jpg/1200px-Albert_Bierstadt_-_Mount_Corcoran.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Gosnold_at_Cuttyhunk.jpg/1200px-Gosnold_at_Cuttyhunk.jpg",
-  "https://en.wikipedia.org/wiki/File:Albert_Bierstadt_-_California_Spring_-_Google_Art_Project.jpg",
   "https://en.wikipedia.org/wiki/File:Albert_Bierstadt_-_Valley_of_the_Yosemite_-_Google_Art_Project.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Claude-Joseph_Vernet_-_The_four_times_of_day-_Evening_-_Google_Art_Project.jpg/1200px-Claude-Joseph_Vernet_-_The_four_times_of_day-_Evening_-_Google_Art_Project.jpg",
   "https://uploads7.wikiart.org/images/emily-carr/chemainus-bay-vancouver-island-1925.jpg",

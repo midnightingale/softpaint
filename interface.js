@@ -14,7 +14,7 @@ async function randomLink() {
     windowWidth - 50
   );
   let randHeight = Math.min(
-    Math.max(Math.floor(Math.random() * (windowHeight - 200)), 450),
+    Math.max(Math.floor(Math.random() * (windowHeight - 200)), windowHeight/2),
     windowHeight - 230
   );
   imgUrl =
@@ -49,7 +49,7 @@ function savePainting() {
 }
 
 function mouseWheel(event) {
-    brushWeight -= event.delta/event.delta
+    brushWeight -= Math.sign(event.delta)
     brushWeight = abs(brushWeight);
     displayBrushSize();
 }
