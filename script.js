@@ -31,6 +31,7 @@ function setup() {
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
+  brushWeight = Math.floor(windowWidth)
   noStroke();
 }
 
@@ -65,33 +66,32 @@ function revealColor() {
   fill(pixel);
   
   let brushTemp = brushWeight;
-  let brushFrac = brushTemp / 25;
+  let brushFrac = brushTemp / 20;
   let speedTransform = calcSpeedTransform();
   let rotation = Math.atan2(mouseY - pmouseY, mouseX - pmouseX);
   
   translate(mouseX, mouseY);
   rotate(rotation);
-
+  console.log(brushTemp*speedTransform[0], brushTemp*speedTransform[1]);//
   for (let i = 0; i < 15; i++) { //layering for watercolor effect
     ellipse(0, 0, brushTemp*speedTransform[0], brushTemp*speedTransform[1]/*cross axis*/); 
-    console.log(brushTemp*sq(speedTransform[0]), brushTemp*sq(speedTransform[1]));
+    
     brushTemp -= brushFrac;
   }
-
   lastColor = pixel;
 }
 
 
 
 function calcSpeedTransform() {
-  let yval = Math.max(mouseY - pmouseY, 0.1);
-  let xval = Math.max(mouseX - pmouseX, 0.1);
-  let speed = Math.sqrt(sq(yval) + sq(xval)) ;
-  document.getElementById("instruction").innerHTML = speed;
-  if (speed>= 25){
-    return [10, 0.1];
+  let yval = Math.max(mouseY - pmouseY, 0.5);
+  let xval = Math.max(mouseX - pmouseX, 0.5);
+  let speed = Math.cbrt(sq(yval) + sq(xval)) ;
+  console.log(speed + 'speed')
+  if (speed>= 30){
+    return [1, 0.5];
   }
-  return [-1/(speed-30)+1, Math.min(1/(speed-30)+1, 1)];
+  return [-3/(speed-30)+1, Math.min(3/(speed-30)+1, 1)];
 }
 
 
