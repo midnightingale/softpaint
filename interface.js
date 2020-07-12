@@ -27,15 +27,14 @@ async function randomLink() {
   await getDimensions(imgUrl);
   display = loadImage(imgUrl);
   adjustCanvas();
-  updateSourceLink();
 }
 
-function updateSourceLink(sourceEmpty = true){
-  if(sourceEmpty){
-    document.getElementById("source-link").innerHTML = "";
+function updateSourceLink(sourceExists = true){
+  if(sourceExists){
+    document.getElementById("source-link").innerHTML = "view original";
+    document.getElementById("source-link").href = imgUrl;
   } else{
-  document.getElementById("source-link").innerHTML = "view original";
-  document.getElementById("source-link").href = imgUrl;
+    document.getElementById("source-link").innerHTML = "";
   }
 }
 
@@ -61,7 +60,7 @@ function updateSlider(amount) {
 
 function displayBrushSize() {
   document.getElementById("instruction").innerHTML =
-    "scroll to change || brush size: " + brushWeight;
+    "scroll to widen || brush size: " + brushWeight + " ||&nbsp;";
   document.getElementById("slider").value = Math.min(brushWeight, 100);
 }
 

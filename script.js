@@ -1,4 +1,4 @@
-/* global createCanvas,drawTouchPrompt,loadFont,textAlign, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas,updateSourceLink,drawTouchPrompt,loadFont,textAlign, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 0, h: 0 };
@@ -27,7 +27,6 @@ function preload() {
 
 function setup() {
   getDimensions(imgUrl);
-  
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
@@ -56,9 +55,11 @@ function getDimensions(url) {
       imgDimensions.h = this.height;
       adjustCanvas();
       document.getElementById("error-display").innerHTML = "";
+      updateSourceLink();
       resolve();
     };
   });
+  
 }
 
 function revealColor() {
