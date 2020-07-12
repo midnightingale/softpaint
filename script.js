@@ -1,4 +1,4 @@
-/* global createCanvas, translate, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, translate, updateSizeDisplay, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -31,7 +31,9 @@ function setup() {
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
-  brushWeight = Math.floor(windowWidth)
+  
+  brushWeight = Math.floor(windowWidth/15)
+  updateSizeDisplay();
   noStroke();
 }
 
@@ -86,7 +88,7 @@ function revealColor() {
 function calcSpeedTransform() {
   let yval = Math.max(mouseY - pmouseY, 0.5);
   let xval = Math.max(mouseX - pmouseX, 0.5);
-  let speed = Math.cbrt(sq(yval) + sq(xval)) ;
+  let speed = Math.min(Math.max(Math.sqrt(sq(yval) + sq(xval)),1),50) ;
   console.log(speed + 'speed')
   if (speed>= 30){
     return [1, 0.5];

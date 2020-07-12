@@ -47,8 +47,12 @@ function savePainting() {
 function mouseWheel(event) {
   brushWeight -= event.delta / 50;
   brushWeight = abs(brushWeight);
+}
+
+function updateSizeDisplay(){
   document.getElementById("instruction").innerHTML =
     "scroll brush size: " + brushWeight + " | hover to paint";
 }
+
 
 /* global createCanvas, brushWeight, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
