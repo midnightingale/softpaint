@@ -24,7 +24,7 @@ async function randomLink() {
     "x" +
     randHeight+
     "/"
-  
+
   await getDimensions(imgUrl);
   display = loadImage(imgUrl);
   adjustCanvas();
