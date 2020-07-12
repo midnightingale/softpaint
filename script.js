@@ -120,6 +120,7 @@ function adjustCanvas() {
 }
 
 function fitImage(){
+  console.log(imgDimensions);
   let minDim = Math.min(imgDimensions.w, imgDimensions.h);
   if (minDim == imgDimensions.w){ 
     imgDimensions.w = (windowHeight - 220) * (imgDimensions.w / imgDimensions.h);
@@ -129,6 +130,8 @@ function fitImage(){
     imgDimensions.h = (windowWidth - 50) * (imgDimensions.h / imgDimensions.w);
     imgDimensions.w = windowWidth - 50;
   }
+  display.resize(imgDimensions.w, 0);
+  console.log(imgDimensions);
 }
 
 //prevents black lines when mouse moves off canvas
