@@ -1,4 +1,4 @@
-/* global createCanvas, translate, updateSizeDisplay, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas,createSlider, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -13,6 +13,7 @@ imgUrl =
 let canvas,
   display,
   pixel,
+  brushWeightSlider,
   isPainting = false,
   brushWeight = 30,
   lastColor = [128, 128, 128, 20];
@@ -31,20 +32,21 @@ function setup() {
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
+  brushWeightSlider = createSlider(0, 255, 100);
   
-  brushWeight = Math.floor(windowWidth/10)
-  updateSizeDisplay();
+  brushWeight = Math.floor(windowWidth/15)
+  displayBrushSize();
   noStroke();
 }
 
 function draw() {
+  brushWeight = 
   if (isPainting && pmouseX != mouseX && pmouseY != mouseY) {
     revealColor();
   }
 }
 
-/*images take time to load, so this function returns a Promise that 
-causes other functions to wait until it's done*/
+//updates dimensions and returns a Promise after image finishes loading
 function getDimensions(url) {
   let userImage = new Image();
   userImage.src = url;
@@ -75,10 +77,10 @@ function revealColor() {
   
   translate(mouseX, mouseY);
   rotate(rotation);
-  console.log(brushTemp*speedTransform[0], brushTemp*speedTransform[1]);//
+
   for (let i = 0; i < 15; i++) { //layering for watercolor effect
     mainAxis = Math.min(Math.max(brushTemp*speedTransform[0],5),brushTemp*2);
-    crossAxis = Math.min(Math.max(brushTemp*speedTransform[1],5),brushTemp/2);
+    crossAxis = Math.min(Math.max(brushTemp*speedTransform[1],0),brushTemp);
     ellipse(0, 0, mainAxis, crossAxis); 
     brushTemp -= brushFrac;
   }
@@ -88,14 +90,14 @@ function revealColor() {
 
 
 function calcSpeedTransform() {
-  let yval = Math.max(mouseY - pmouseY, 0.5);
+  let yval = Math.max(mouseY - pmouseY, 0.5); //ensure no division by 0
   let xval = Math.max(mouseX - pmouseX, 0.5);
-  let speed = Math.min(Math.max(Math.sqrt(sq(yval) + sq(xval)),1),40) ;
+  let speed = Math.min(Math.max(Math.sqrt(sq(yval) + sq(xval)),1),40) ; //restricted between [1,40]
   console.log(speed + 'speed')
   if (speed>= 40){
-    return [1, 0.5];
+    return [2, 0.5];
   }
-  return [-3/(speed-40)+1, Math.min(3/(speed-40)+1, 1)];
+  return [-10/(speed-40)+1, Math.max(10/(speed-40)+1, 1)];
 }
 
 

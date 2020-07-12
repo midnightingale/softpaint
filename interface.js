@@ -49,7 +49,7 @@ function mouseWheel(event) {
   brushWeight = abs(brushWeight);
 }
 
-function updateSizeDisplay(){
+function displayBrushSize(){
   document.getElementById("instruction").innerHTML =
     "scroll brush size: " + brushWeight + " | hover to paint";
 }
