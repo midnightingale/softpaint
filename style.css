@@ -1,7 +1,6 @@
 html {
   height: 100%;
-  overflow: hidden;
-}
+  }
 body {
   background-attachment: fixed;
   margin: 0;
@@ -120,8 +119,8 @@ a{
 
 #slider{
   margin: 15px 0 0 0;
-  min-width: 60%;
-  max-width: 300px;
+  width: 60%;
+  max-width: 250px;
 }
 
 #test{

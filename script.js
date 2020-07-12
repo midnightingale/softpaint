@@ -21,6 +21,7 @@ let canvas,
 
 function preload() {
   display = loadImage(imgUrl);
+  fitImage();
   jost = loadFont('https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2FJost-VariableFont_wght.ttf?v=1594528844941');
 }
 
@@ -122,14 +123,15 @@ function adjustCanvas() {
 function fitImage(){
   let minDim = Math.min(imgDimensions.w, imgDimensions.h);
   if (minDim == imgDimensions.w){ 
-    imgDimensions.w = (windowHeight - 230) * (imgDimensions.w / imgDimensions.h);
-    imgDimensions.h = windowHeight - 230;
+    imgDimensions.w = (windowHeight - 270) * (imgDimensions.w / imgDimensions.h);
+    imgDimensions.h = windowHeight - 270;
   }
   else if (minDim == imgDimensions.h){
-    imgDimensions.h = (windowWidth - 50) * (imgDimensions.h / imgDimensions.w);
-    imgDimensions.w = windowWidth - 50;
+    imgDimensions.h = (windowWidth - 100) * (imgDimensions.h / imgDimensions.w);
+    imgDimensions.w = windowWidth - 100;
   }
   display.resize(imgDimensions.w, imgDimensions.h);
+  
   console.log(imgDimensions);
 }
 
