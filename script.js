@@ -120,17 +120,16 @@ function adjustCanvas() {
 }
 
 function fitImage(){
-  console.log(imgDimensions);
   let minDim = Math.min(imgDimensions.w, imgDimensions.h);
   if (minDim == imgDimensions.w){ 
-    imgDimensions.w = (windowHeight - 220) * (imgDimensions.w / imgDimensions.h);
-    imgDimensions.h = windowHeight - 220;
+    imgDimensions.w = (windowHeight - 230) * (imgDimensions.w / imgDimensions.h);
+    imgDimensions.h = windowHeight - 230;
   }
   else if (minDim == imgDimensions.h){
     imgDimensions.h = (windowWidth - 50) * (imgDimensions.h / imgDimensions.w);
     imgDimensions.w = windowWidth - 50;
   }
-  display.resize(imgDimensions.w, 0);
+  display.resize(imgDimensions.w, imgDimensions.h);
   console.log(imgDimensions);
 }
 

@@ -12,9 +12,8 @@ async function userLink() {
 async function userUpload(event){
   let uploadUrl = URL.createObjectURL(event.target.files[0]);
   await getDimensions(uploadUrl);
-  console.log()
   display = loadImage(uploadUrl);
-  console.log(display.width, display.height, 'image dimensions after adjust');
+  //console.log(display.width, display.height, 'image dimensions after adjust');
   document.getElementById("source-link").innerHTML = "";
 }
 
