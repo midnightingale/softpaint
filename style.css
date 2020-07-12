@@ -1,7 +1,8 @@
 html {
   height: 100%;
   overflow: hidden;
-  }
+}
+
 body {
   background-attachment: fixed;
   margin: 0;
@@ -16,14 +17,13 @@ body {
     rgba(89, 89, 89, 1) 100%
   );
   background-repeat: no-repeat;
-  height: 110%;
 }
 
-h1,
-p {
+h1, p {
   margin: 0;
 }
-a{
+
+a {
   color: rgba(42, 201, 235, 1);
 }
 
@@ -47,7 +47,6 @@ a{
   outline: none;
   position: relative;
   color: #FFFFFF;
-    
 }
 
 .button:hover {
@@ -55,48 +54,60 @@ a{
 }
 
 #user-uploader {
-background: rgb(217,125,148);
-background: linear-gradient(0deg, rgba(217,125,148,1) 0%, rgba(237,159,159,1) 100%);}
+  background: rgb(217, 125, 148);
+  background: linear-gradient(
+    0deg,
+    rgba(217, 125, 148, 1) 0%,
+    rgba(237, 159, 159, 1) 100%
+  );
+}
 
 #user-uploader:active {
   background: linear-gradient(
     0deg,
-    rgba(237,159,159,1) 0%,
-    rgba(217,125,148,1) 100%
+    rgba(237, 159, 159, 1) 0%,
+    rgba(217, 125, 148, 1) 100%
   );
 }
 
 #random-link {
-background: rgb(173,129,203);
-background: linear-gradient(0deg, rgba(170,126,200,1) 0%, rgba(217,159,237,1) 100%);
+  background: rgb(173, 129, 203);
+  background: linear-gradient(
+    0deg,
+    rgba(170, 126, 200, 1) 0%,
+    rgba(217, 159, 237, 1) 100%
+  );
 }
 
 #random-link:active {
   background: linear-gradient(
     0deg,
-    rgba(217,159,237,1) 0%,
-    rgba(170,126,200,1) 100%
+    rgba(217, 159, 237, 1) 0%,
+    rgba(170, 126, 200, 1) 100%
   );
 }
 
 #save-painting {
-
-  background: rgb(109,92,184);
-background: linear-gradient(0deg, rgba(119,112,194,1) 0%, rgba(141,163,228,1) 100%);
+  background: rgb(109, 92, 184);
+  background: linear-gradient(
+    0deg,
+    rgba(119, 112, 194, 1) 0%,
+    rgba(141, 163, 228, 1) 100%
+  );
 }
 
 #save-painting:active {
   background: rgba(135, 54, 226, 1);
   background: linear-gradient(
     0deg,
-    rgba(141,163,228,1) 0%,
-    rgba(119,112,194,1) 100%
+    rgba(141, 163, 228, 1) 0%,
+    rgba(119, 112, 194, 1) 100%
   );
 }
 
 #canvas-div {
   box-shadow: 0 0px 9px #FFFFFF;
-  margin: 5px 0px 0px 0px ;
+  margin: 5px 0px 0px 0px;
   display: inline-block;
   line-height: 0;
 }
@@ -106,14 +117,13 @@ background: linear-gradient(0deg, rgba(119,112,194,1) 0%, rgba(141,163,228,1) 10
   margin: 10px;
 }
 
-#slider{
+#slider {
   margin: 15px 0 0 0;
   width: 60%;
   max-width: 250px;
 }
 
-#test{
-  padding:20px;
+#test {
+  padding: 20px;
   margin: 0 auto;
 }
-

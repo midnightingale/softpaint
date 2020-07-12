@@ -1,23 +1,19 @@
 //resizes canvas-div to match new image, or throws error if image is unreachable
 async function userLink() {
-  imgUrl = window.prompt(
-    "Enter an image URL:",
-    ".jpg, .png, etc."
-  );
+  imgUrl = window.prompt("Enter an image URL:", ".jpg, .png, etc.");
   await getDimensions(imgUrl);
   display = loadImage(imgUrl, null, imageError);
   document.getElementById("source-link").innerHTML = "";
 }
 
-async function userUpload(event){
+async function userUpload(event) {
   let uploadUrl = URL.createObjectURL(event.target.files[0]);
   await getDimensions(uploadUrl);
   display = loadImage(uploadUrl);
-  display.resize(imgDimensions.w, imgDimensions.h)
+  display.resize(imgDimensions.w, imgDimensions.h);
   //console.log(display.width, display.height, 'image dimensions after adjust');
   document.getElementById("source-link").innerHTML = "";
 }
-
 
 //gets new photo from picsum.photos, with dimensions < window size
 async function randomLink() {
@@ -50,7 +46,7 @@ function imageError() {
 }
 
 function savePainting() {
-  saveCanvas("softpainting", "png");
+  saveCanvas("mysoftpainting", "png");
 }
 
 function mouseWheel(event) {
@@ -59,25 +55,25 @@ function mouseWheel(event) {
   displayBrushSize();
 }
 
-function updateSlider(amount){
+function updateSlider(amount) {
   brushWeight = amount;
   displayBrushSize();
 }
 
-function displayBrushSize(){
+function displayBrushSize() {
   document.getElementById("instruction").innerHTML =
-    "scroll to change || brush size: " + brushWeight ;
+    "scroll to change || brush size: " + brushWeight;
   document.getElementById("slider").value = Math.min(brushWeight, 100);
 }
 
-function drawTouchPrompt(){
+function drawTouchPrompt() {
   fill(120);
   textSize(16);
   textFont(jost);
   rectMode(CENTER);
-    textAlign(CENTER, CENTER);
-  
-    text('touch to start', imgDimensions.w/2, imgDimensions.h/2)
+  textAlign(CENTER, CENTER);
+
+  text("touch to start", imgDimensions.w / 2, imgDimensions.h / 2);
 }
 
 /* global createCanvas, fitImage, textSize, rectMode, jost, textFont, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
