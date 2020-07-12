@@ -21,8 +21,8 @@ I also layered several strokes with different widths and low alpha values to cre
 
 ### features in progress
 ☒ speed-based ellipse transformations  
-☐ upload image from device
-☐ responsive resizing of uploaded or linked images  
+☒ upload image from device  
+☒ responsive resizing of uploaded or linked images  
 ☐ fetch images from Unsplash using "sig=" instead of Picsum  
 ☐ display "tap canvas to start" only on mobile  
 

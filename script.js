@@ -122,12 +122,12 @@ function adjustCanvas() {
 
 function fitImage(){
   let minPicDim = Math.min(imgDimensions.w, imgDimensions.h);
-  let minWindowDim = Math.min(windowWidth, windowHeight;
-  if (minDim == imgDimensions.w){ 
-    imgDimensions.w = (minWindowDim - 100) * (imgDimensions.w / imgDimensions.h);
-    imgDimensions.h = minWindowDim - 100;
+  let minWindowDim = Math.min(windowWidth, windowHeight);
+  if (minPicDim == imgDimensions.w){ 
+    imgDimensions.w = (minWindowDim *2/3) * (imgDimensions.w / imgDimensions.h);
+    imgDimensions.h = minWindowDim *2/3;
   }
-  else if (minDim == imgDimensions.h){
+  else if (minPicDim == imgDimensions.h){
     imgDimensions.h = (minWindowDim - 100) * (imgDimensions.h / imgDimensions.w);
     imgDimensions.w = minWindowDim - 100;
   }
