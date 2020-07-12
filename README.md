@@ -29,9 +29,9 @@ Images are dynamically sized based on the user's screen
 ### features in progress
 ☒ upload image from device  
 ☒ responsive resizing of uploaded or linked images  
-☐ fetch images from Unsplash using "sig=" instead of Picsum  
-☐ display "tap canvas to start" only on mobile  
-
+☒ fetch images from Unsplash instead of Picsum  
+☒ display "touch to start" for mobile  
+☐ fix source link wrong redirect on double click
 
 
 -------------------
