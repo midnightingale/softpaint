@@ -58,15 +58,17 @@ function updateSlider(amount){
 function displayBrushSize(){
   document.getElementById("instruction").innerHTML =
     "scroll brush size: " + brushWeight ;
+  document.getElementById("slider").value = Math.min(brushWeight, 100);
 }
 
-function drawMobilePrompt(){
+function drawTouchPrompt(){
   fill(120);
   textSize(16);
+  textFont(jost);
   rectMode(CENTER);
     textAlign(CENTER, CENTER);
   
     text('touch to start', imgDimensions.w/2, imgDimensions.h/2)
 }
 
-/* global createCanvas, rectMode, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, textSize, rectMode, jost, textFont, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/

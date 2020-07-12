@@ -1,4 +1,4 @@
-/* global createCanvas, textAlign, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas,drawTouchPrompt,loadFont,textAlign, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
 //default values
 let imgDimensions = { w: 570, h: 450 };
@@ -13,6 +13,7 @@ imgUrl =
 let canvas,
   display,
   pixel,
+  jost,
   isPainting = false,
   notStarted = true,
   brushWeight = 30,
@@ -20,6 +21,7 @@ let canvas,
 
 function preload() {
   display = loadImage(imgUrl);
+  jost = loadFont('https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2FJost-VariableFont_wght.ttf?v=1594528844941');
 }
 
 function setup() {
@@ -43,7 +45,7 @@ function draw() {
     revealColor();
   }
   if (notStarted){
-    drawMobilePrompt();
+    drawTouchPrompt();
   }
 }
 
