@@ -49,10 +49,13 @@ function savePainting() {
 }
 
 function mouseWheel(event) {
-  
-    brushWeight -= Math.floor(event.delta/50);
+    if(abs(event.delta)>3){
+      brushWeight -= Math.floor(event.delta/50);
+    } else{
+      brushWeight -= Math.floor(event.delta);
+    }
     brushWeight = abs(brushWeight);
-  displayBrushSize();
+    displayBrushSize();
 }
 
 function updateSlider(amount) {
