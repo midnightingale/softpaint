@@ -18,12 +18,13 @@ async function randomLink() {
     windowHeight - 230
   );
   imgUrl =
-    "https://source.unsplash.com/featured/"+//collection/11408131/"+
+    "https://source.unsplash.com/collection/11408131/"+
      +
     randWidth +
     "x" +
     randHeight+
-    "?nature/"
+    "/"
+  
   await getDimensions(imgUrl);
   display = loadImage(imgUrl);
   adjustCanvas();

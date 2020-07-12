@@ -16,6 +16,5 @@ let defaultPaintings = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Claude-Joseph_Vernet_-_The_four_times_of_day-_Evening_-_Google_Art_Project.jpg/1200px-Claude-Joseph_Vernet_-_The_four_times_of_day-_Evening_-_Google_Art_Project.jpg",
   "https://uploads7.wikiart.org/images/emily-carr/chemainus-bay-vancouver-island-1925.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Boris_Kustodiev_-_Shrovetide_-_Google_Art_Project.jpg/1200px-Boris_Kustodiev_-_Shrovetide_-_Google_Art_Project.jpg",
-  "https://en.wikipedia.org/wiki/File:Claude-Joseph_Vernet_-_The_four_times_of_day-_Evening_-_Google_Art_Project.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Paul_Gauguin_-_Fatata_te_Miti_%28By_the_Sea%29_-_Google_Art_Project.jpg/1280px-Paul_Gauguin_-_Fatata_te_Miti_%28By_the_Sea%29_-_Google_Art_Project.jpg"
 ];
