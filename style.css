@@ -24,7 +24,7 @@ h1, p {
 }
 
 a {
-  color: rgba(42, 201, 235, 1);
+  color: rgba(141, 163, 228, 1);
 }
 
 .container {
@@ -121,6 +121,14 @@ a {
   margin: 15px 0 0 0;
   width: 60%;
   max-width: 250px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+     -webkit-appearance: none;
+    background-color: rgba(141, 163, 228, 1);
+    opacity: 0.5;
+    width: 10px;
+    height: 26px;
 }
 
 #test {

@@ -1,11 +1,8 @@
 /* global createCanvas,updateSourceLink,drawTouchPrompt,loadFont,textAlign, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
 
-//default values
 let imgDimensions = { w: 0, h: 0 };
-let imgUrl = Math.floor(Math.random() * 10);
-
-
-let canvas,
+let imgUrl,
+  canvas,
   display,
   pixel,
   jost,
@@ -15,8 +12,8 @@ let canvas,
   lastColor = [128, 128, 128, 20];
 
 function preload() {
-  console.log(Math.floor(Math.random()*defaultPaintings.length))
-  imgUrl = defaultPaintings[Math.floor(Math.random()*defaultPaintings.length)];
+  imgUrl =
+    defaultPaintings[Math.floor(Math.random() * defaultPaintings.length)];
   display = loadImage(imgUrl);
   jost = loadFont(
     "https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2FJost-VariableFont_wght.ttf?v=1594528844941"
@@ -24,13 +21,10 @@ function preload() {
 }
 
 function setup() {
-  
-  
   getDimensions(imgUrl);
   canvas = createCanvas(imgDimensions.w, imgDimensions.h);
   canvas.parent("canvas-div");
   background(235);
-
   brushWeight = Math.floor(windowWidth / 15);
   displayBrushSize();
   noStroke();
@@ -39,8 +33,7 @@ function setup() {
 function draw() {
   if (isPainting && pmouseX != mouseX && pmouseY != mouseY) {
     revealColor();
-  }
-  if (notStarted) {
+  } else if (notStarted) {
     drawTouchPrompt();
   }
 }
@@ -59,7 +52,6 @@ function getDimensions(url) {
       resolve();
     };
   });
-  
 }
 
 function revealColor() {
@@ -145,13 +137,11 @@ document.getElementById("canvas-div").addEventListener("mouseout", function() {
   isPainting = false;
 });
 
-
 let defaultPaintings = [
   "https://cdn.glitch.com/ed00bc65-49f7-4b45-ad53-f1dcea7aba31%2Fil_570xN.1424060518_k0dd.jpg?v=1594424247188",
   "https://www.vangoghgallery.com/painting/img/bedroom_full.jpeg",
   "https://collectionapi.metmuseum.org/api/collection/v1/iiif/488730/1004971/main-image",
   "https://static1.squarespace.com/static/5858d37b03596e9f5512deb4/58e68f676a4963e2fc190492/5bb3e7c0e4966bb96267baef/1538517489810/default.jpg",
-  "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/water-lilies-1919-1-claude-monet.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Scream.jpg/603px-The_Scream.jpg",
   "https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2F4c90350d7c32a9b07b48470ca17469eb.jpg",
   "https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2Fclocks-2.jpg"

@@ -2,8 +2,9 @@ async function userUpload(event) {
   let uploadUrl = URL.createObjectURL(event.target.files[0]);
   await getDimensions(uploadUrl);
   display = loadImage(uploadUrl);
-  display.resize(imgDimensions.w, imgDimensions.h);
+  imgUrl = uploadUrl;
   updateSourceLink();
+  display.resize(imgDimensions.w, imgDimensions.h);
 }
 
 //gets new photo from picsum.photos, with dimensions < window size
