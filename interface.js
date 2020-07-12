@@ -2,7 +2,7 @@
 async function userUpload() {
   imgUrl = window.prompt(
     "Enter an image URL:",
-    "[.jpg, .png, etc. from any image hosting site]"
+    "[.jpg, .png, etc.]"
   );
   await getDimensions(imgUrl);
   display = loadImage(imgUrl, null, imageError);
@@ -31,7 +31,7 @@ async function randomUpload() {
   await getDimensions(imgUrl);
   display = loadImage(imgUrl);
   adjustCanvas();
-  document.getElementById("source-link").innerHTML = "view source";
+  document.getElementById("source-link").innerHTML = "view original";
   document.getElementById("source-link").href = imgUrl;
 }
 
@@ -41,7 +41,7 @@ function imageError() {
 }
 
 function savePainting() {
-  saveCanvas("mySoftpoints", "png");
+  saveCanvas("softpainting", "png");
 }
 
 function mouseWheel(event) {
