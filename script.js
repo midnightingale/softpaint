@@ -14,6 +14,7 @@ let imgUrl,
 function preload() {
   imgUrl =
     defaultPaintings[Math.floor(Math.random() * defaultPaintings.length)];
+  imgUrl = "https://upload.wikimedia.org/wikipedia/en/d/dc/Woman_in_Hat_and_Fur_Collar.jpg"
   display = loadImage(imgUrl);
   jost = loadFont(
     "https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2FJost-VariableFont_wght.ttf?v=1594528844941"
@@ -142,7 +143,7 @@ let defaultPaintings = [
   "https://www.vangoghgallery.com/painting/img/bedroom_full.jpeg",
   "https://collectionapi.metmuseum.org/api/collection/v1/iiif/488730/1004971/main-image",
   "https://static1.squarespace.com/static/5858d37b03596e9f5512deb4/58e68f676a4963e2fc190492/5bb3e7c0e4966bb96267baef/1538517489810/default.jpg",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Scream.jpg/603px-The_Scream.jpg",
+  "https://upload.wikimedia.org/wikipedia/en/d/dc/Woman_in_Hat_and_Fur_Collar.jpg",
   "https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2F4c90350d7c32a9b07b48470ca17469eb.jpg",
   "https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2Fclocks-2.jpg"
 ];
