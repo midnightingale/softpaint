@@ -74,6 +74,7 @@ function revealColor() {
 
   for (let i = 0; i < 15; i++) { //layering for watercolor effect
     ellipse(0, 0, brushTemp*speedTransform[0], brushTemp*speedTransform[1]/*cross axis*/); 
+    console.log(brushTemp*sq(speedTransform[0]), brushTemp*sq(speedTransform[1]));
     brushTemp -= brushFrac;
   }
 
@@ -85,8 +86,12 @@ function revealColor() {
 function calcSpeedTransform() {
   let yval = Math.max(mouseY - pmouseY, 0.1);
   let xval = Math.max(mouseX - pmouseX, 0.1);
-  let speedTransform = Math.sqrt(sq(yval) + sq(xval)) / 10;
-  return [1/(speedTransform+0.5)+1, Math.min(-1/(speedTransform+2)+1, 1)];
+  let speed = Math.sqrt(sq(yval) + sq(xval)) ;
+  document.getElementById("instruction").innerHTML = speed;
+  if (speed>= 25){
+    return [10, 0.1];
+  }
+  return [-1/(speed-30)+1, Math.min(1/(speed-30)+1, 1)];
 }
 
 
