@@ -120,21 +120,16 @@ function adjustCanvas() {
 }
 
 function fitImage(){
-  let minDim = Math.min(windowWidth, windowHeight);
-  if (windowWidth <= windowHeight){
-    
+  let minDim = Math.min(imgDimensions.w, imgDimensions.h);
+  if (minDim == imgDimensions.w){ 
+    imgDimensions.w = (windowHeight - 220) * (imgDimensions.w / imgDimensions.h);
+    imgDimensions.h = windowHeight - 220;
   }
-  else if (windowWidth > windowHeight){
-    
-  }
-}
-/*
-if (windowWidth < 570) {
-    //mobile device responsiveness for default img
+  else if (minDim == imgDimensions.h){
     imgDimensions.h = (windowWidth - 50) * (imgDimensions.h / imgDimensions.w);
     imgDimensions.w = windowWidth - 50;
   }
-*/
+}
 
 //prevents black lines when mouse moves off canvas
 document

@@ -6,7 +6,6 @@ async function userLink() {
   );
   await getDimensions(imgUrl);
   display = loadImage(imgUrl, null, imageError);
-  adjustCanvas();
   document.getElementById("source-link").innerHTML = "";
 }
 
@@ -15,7 +14,8 @@ async function userUpload(event){
   console.log(uploadUrl);
   await getDimensions(uploadUrl);
   display = loadImage(uploadUrl);
-  adjustCanvas();
+  fitImage();
+  display.resize(imgDimensions.w/2, 0)
   document.getElementById("source-link").innerHTML = "";
 }
 
@@ -96,4 +96,4 @@ function drawTouchPrompt(){
     text('touch to start', imgDimensions.w/2, imgDimensions.h/2)
 }
 
-/* global createCanvas, textSize, rectMode, jost, textFont, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
+/* global createCanvas, fitImage, textSize, rectMode, jost, textFont, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
