@@ -52,7 +52,7 @@ a{
   box-shadow: 0 0px 3px #CCCCCC;
 }
 
-#user-upload {
+#user-link {
   color: #FFFFFF;
   background: linear-gradient(
     0deg,
@@ -61,7 +61,7 @@ a{
   );
 }
 
-#user-upload:active {
+#user-link:active {
   background: linear-gradient(
     0deg,
     rgba(32, 233, 205, 1) 0%,
@@ -69,7 +69,7 @@ a{
   );
 }
 
-#random-upload {
+#random-link {
   color: #FFFFFF;
   background: rgb(29, 135, 255);
   background: linear-gradient(
@@ -79,7 +79,7 @@ a{
   );
 }
 
-#random-upload:active {
+#random-link:active {
   background: linear-gradient(
     0deg,
     rgba(35, 197, 240, 1) 0%,
@@ -119,7 +119,7 @@ a{
 }
 
 #slider{
-  margin: 20px;
+  margin: 20px 0 0 0;
 }
 
 #test{

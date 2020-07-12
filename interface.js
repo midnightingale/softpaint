@@ -1,8 +1,8 @@
 //resizes canvas-div to match new image, or throws error if image is unreachable
-async function userUpload() {
+async function userLink() {
   imgUrl = window.prompt(
     "Enter an image URL:",
-    "[.jpg, .png, etc.]"
+    ".jpg, .png, etc."
   );
   await getDimensions(imgUrl);
   display = loadImage(imgUrl, null, imageError);
@@ -10,8 +10,13 @@ async function userUpload() {
   document.getElementById("source-link").innerHTML = "";
 }
 
+function userUpload(){
+  
+}
+
+
 //gets new photo from picsum.photos, with dimensions < window size
-async function randomUpload() {
+async function randomLink() {
   let randWidth = Math.min(
     Math.max(Math.floor(Math.random() * (windowWidth - 50)), 300),
     windowWidth - 50
