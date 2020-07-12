@@ -20,11 +20,11 @@ For a more realistic and artistic painting experience, I averaged the RGBA value
 I also layered several strokes with different widths and low alpha values to create the watercolor effect.
 
 ### features in progress
-- speed-based ellipse transformations
-- upload from device (move save button to bottom, new top row -> Link | Upload | Random)
-- responsive resizing of uploaded or linked images
-- fetch images from Unsplash using "sig=" instead of Picsum
-- display "tap canvas to start" only on mobile
+☒ speed-based ellipse transformations  
+☐ upload image from device
+☐ responsive resizing of uploaded or linked images  
+☐ fetch images from Unsplash using "sig=" instead of Picsum  
+☐ display "tap canvas to start" only on mobile  
 
 
 

@@ -10,7 +10,7 @@ async function userLink() {
   document.getElementById("source-link").innerHTML = "";
 }
 
-function userUpload(){
+function userUpload(event){
   
 }
 
@@ -62,7 +62,7 @@ function updateSlider(amount){
 
 function displayBrushSize(){
   document.getElementById("instruction").innerHTML =
-    "scroll brush size: " + brushWeight ;
+    "scroll to change || brush size: " + brushWeight ;
   document.getElementById("slider").value = Math.min(brushWeight, 100);
 }
 

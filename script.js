@@ -115,13 +115,17 @@ function adjustCanvas() {
   fitImage();
   resizeCanvas(imgDimensions.w, imgDimensions.h);
   background(235);
-  document.getElementById("canvas-div").style =
-    "width: " + imgDimensions.w + "px";
-  document.getElementById("canvas-div").style =
-    "height: " + imgDimensions.h - 100 + "px";
+  document.getElementById("canvas-div").width =
+    imgDimensions.w + "px";
+  document.getElementById("canvas-div").height =
+    imgDimensions.h - 100 + "px";
 }
 
-function fitImage() {}
+function fitImage(){}
+
+function windowResized(){
+  adjustCanvas();
+}
 
 //prevents black lines when mouse moves off canvas
 document
