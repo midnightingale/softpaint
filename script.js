@@ -45,11 +45,15 @@ function getDimensions(url) {
       imgDimensions.w = this.width;
       imgDimensions.h = this.height;
       adjustCanvas();
-      document.getElementById("error-display").innerHTML = "";
-      updateSourceLink();
+      reset();
       resolve();
     };
   });
+}
+function reset(){
+    document.getElementById("error-display").innerHTML = "";
+    updateSourceLink();
+    notStarted = true();
 }
 
 function revealColor() {

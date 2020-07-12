@@ -49,11 +49,7 @@ function savePainting() {
 }
 
 function mouseWheel(event) {
-    if(abs(event.delta)>3){
-      brushWeight -= Math.floor(event.delta/50);
-    } else{
-      brushWeight -= Math.floor(event.delta);
-    }
+    brushWeight -= event.delta/event.delta
     brushWeight = abs(brushWeight);
     displayBrushSize();
 }
