@@ -10,10 +10,30 @@ async function userLink() {
   document.getElementById("source-link").innerHTML = "";
 }
 
-function userUpload(event){
-  
+async function userUpload(event){
+  let uploadUrl = URL.createObjectURL(event.target.files[0]);
+  console.log(uploadUrl);
+  await getDimensions(uploadUrl);
+  display = loadImage(uploadUrl);
+  adjustCanvas();
+  document.getElementById("source-link").innerHTML = "";
 }
 
+/*
+function getDimensions(url) {
+  let image = new Image();
+  image.src = url;
+  return new Promise((resolve, reject) => {
+    image.onload = function() {
+      imgDimensions.w = this.width;
+      imgDimensions.h = this.height;
+      adjustCanvas();
+      document.getElementById("error-display").innerHTML = "";
+      resolve();
+    };
+  });
+}
+*/
 
 //gets new photo from picsum.photos, with dimensions < window size
 async function randomLink() {

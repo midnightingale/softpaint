@@ -51,10 +51,10 @@ function draw() {
 
 //updates dimensions and returns a Promise after image finishes loading
 function getDimensions(url) {
-  let userImage = new Image();
-  userImage.src = url;
+  let image = new Image();
+  image.src = url;
   return new Promise((resolve, reject) => {
-    userImage.onload = function() {
+    image.onload = function() {
       imgDimensions.w = this.width;
       imgDimensions.h = this.height;
       adjustCanvas();
@@ -63,7 +63,6 @@ function getDimensions(url) {
     };
   });
 }
-
 
 
 function revealColor() {
@@ -123,9 +122,6 @@ function adjustCanvas() {
 
 function fitImage(){}
 
-function windowResized(){
-  adjustCanvas();
-}
 
 //prevents black lines when mouse moves off canvas
 document
