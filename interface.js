@@ -13,6 +13,7 @@ async function userUpload(event){
   let uploadUrl = URL.createObjectURL(event.target.files[0]);
   await getDimensions(uploadUrl);
   display = loadImage(uploadUrl);
+  display.resize(imgDimensions.w, imgDimensions.h)
   //console.log(display.width, display.height, 'image dimensions after adjust');
   document.getElementById("source-link").innerHTML = "";
 }

@@ -21,7 +21,6 @@ let canvas,
 
 function preload() {
   display = loadImage(imgUrl);
-  fitImage();
   jost = loadFont('https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2FJost-VariableFont_wght.ttf?v=1594528844941');
 }
 
@@ -67,6 +66,7 @@ function getDimensions(url) {
 
 
 function revealColor() {
+  display.resize(imgDimensions.w, imgDimensions.h)
   pixel = display.get(mouseX, mouseY);
   pixel = averageColor(pixel, lastColor);
   pixel[3] = 12; //sets alpha to low value for watercolor effect
@@ -121,18 +121,16 @@ function adjustCanvas() {
 }
 
 function fitImage(){
-  let minDim = Math.min(imgDimensions.w, imgDimensions.h);
+  let minPicDim = Math.min(imgDimensions.w, imgDimensions.h);
+  let minWindowDim = Math.min(windowWidth, windowHeight;
   if (minDim == imgDimensions.w){ 
-    imgDimensions.w = (windowHeight - 270) * (imgDimensions.w / imgDimensions.h);
-    imgDimensions.h = windowHeight - 270;
+    imgDimensions.w = (minWindowDim - 100) * (imgDimensions.w / imgDimensions.h);
+    imgDimensions.h = minWindowDim - 100;
   }
   else if (minDim == imgDimensions.h){
-    imgDimensions.h = (windowWidth - 100) * (imgDimensions.h / imgDimensions.w);
-    imgDimensions.w = windowWidth - 100;
+    imgDimensions.h = (minWindowDim - 100) * (imgDimensions.h / imgDimensions.w);
+    imgDimensions.w = minWindowDim - 100;
   }
-  display.resize(imgDimensions.w, imgDimensions.h);
-  
-  console.log(imgDimensions);
 }
 
 //prevents black lines when mouse moves off canvas
