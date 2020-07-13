@@ -53,7 +53,7 @@ function getDimensions(url) {
 function reset(){
     document.getElementById("error-display").innerHTML = "";
     updateSourceLink();
-    notStarted = true();
+    notStarted = true;
 }
 
 function revealColor() {
