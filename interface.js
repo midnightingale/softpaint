@@ -13,7 +13,7 @@ async function randomLink() {
     windowWidth - 50
   );
   let randHeight = Math.min(
-    Math.max(Math.floor(Math.random() * (windowHeight - 200)), windowHeight/2),
+    Math.max(Math.floor(Math.random() * (windowHeight - 200)), windowHeight/1.5),
     windowHeight - 230
   );
   imgUrl =
