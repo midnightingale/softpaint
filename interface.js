@@ -1,13 +1,12 @@
 async function userUpload(event) {
   let uploadUrl = URL.createObjectURL(event.target.files[0]);
   await getDimensions(uploadUrl);
-  display = loadImage(uploadUrl);
+  displayed = loadImage(uploadUrl);
   imgUrl = uploadUrl;
   updateSourceLink();
-  display.resize(imgDimensions.w, imgDimensions.h);
+  displayed.resize(imgDimensions.w, imgDimensions.h);
 }
 
-//gets new photo from picsum.photos, with dimensions < window size
 async function randomLink() {
   let randWidth = Math.min(
     Math.max(Math.floor(Math.random() * (windowWidth - 50)), 300),
@@ -26,7 +25,7 @@ async function randomLink() {
     "/"
 
   await getDimensions(imgUrl);
-  display = loadImage(imgUrl);
+  displayed = loadImage(imgUrl);
   adjustCanvas();
 }
 
@@ -79,8 +78,7 @@ function drawTouchPrompt() {
 async function userLink() {
   imgUrl = window.prompt("Enter an image URL:", ".jpg, .png, etc.");
   await getDimensions(imgUrl);
-  display = loadImage(imgUrl, null, imageError);
+  displayed = loadImage(imgUrl, null, imageError);
   document.getElementById("source-link").innerHTML = "";
 }
 
-/* global createCanvas, fitImage, textSize, rectMode, jost, textFont, brushWeight,imgDimensions, textAlign, text, CENTER, abs, display, getDimensions, imgUrl, adjustCanvas, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/

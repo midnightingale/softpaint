@@ -1,7 +1,7 @@
 let imgDimensions = { w: 0, h: 0 };
 let imgUrl,
   canvas,
-  display,
+  displayed,
   pixel,
   jost,
   isPainting = false,
@@ -12,7 +12,7 @@ let imgUrl,
 function preload() {
   imgUrl =
     defaultPaintings[Math.floor(Math.random() * defaultPaintings.length)];
-  display = loadImage(imgUrl);
+  displayed = loadImage(imgUrl);
   jost = loadFont(
     "https://cdn.glitch.com/78391c90-30ed-44d7-8ca3-ccd51ddd2e05%2FJost-VariableFont_wght.ttf?v=1594528844941"
   );
@@ -30,7 +30,7 @@ function setup() {
 
 function draw() {
   if (isPainting && pmouseX != mouseX && pmouseY != mouseY) {
-    revealColor();
+    revealBrush();
   } else if (notStarted) {
     drawTouchPrompt();
   }
@@ -50,18 +50,16 @@ function getDimensions(url) {
     };
   });
 }
+
+
 function reset(){
     document.getElementById("error-display").innerHTML = "";
     updateSourceLink();
     notStarted = true;
 }
 
-function revealColor() {
-  display.resize(imgDimensions.w, imgDimensions.h);
-  pixel = display.get(mouseX, mouseY);
-  pixel = averageColor(pixel, lastColor);
-  pixel[3] = 12; //sets alpha to low value for watercolor effect
-  fill(pixel);
+function revealBrush() {
+  calculateColor();
 
   let brushTemp = brushWeight;
   let brushFrac = brushTemp / 20;
@@ -82,6 +80,15 @@ function revealColor() {
     ellipse(0, 0, mainAxis, crossAxis);
     brushTemp -= brushFrac;
   }
+ 
+}
+
+function calculateColor(){
+  displayed.resize(imgDimensions.w, imgDimensions.h);
+  pixel = displayed.get(mouseX, mouseY);
+  pixel = averageColor(pixel, lastColor);
+  pixel[3] = 12; //sets alpha to low value for watercolor effect
+  fill(pixel);
   lastColor = pixel;
 }
 
@@ -138,5 +145,3 @@ document
 document.getElementById("canvas-div").addEventListener("mouseout", function() {
   isPainting = false;
 });
-
-/* global createCanvas,updateSourceLink,defaultPaintings,drawTouchPrompt,loadFont,textAlign, translate, displayBrushSize, rotate, noStroke, ellipse, fill, cursor, saveCanvas, strokeWeight, stroke, sq, windowWidth, line, windowHeight, colorMode, HSB,pmouseX, pmouseY background loadImage image resizeCanvas get mouseX, mouseY*/
