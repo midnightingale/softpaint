@@ -27,6 +27,14 @@ async function randomLink() {
   await getDimensions(imgUrl);
   displayed = loadImage(imgUrl);
   adjustCanvas();
+  fixUnsplashSrc(imgUrl)
+}
+
+function fixUnsplashSrc(unsplashsrc){
+  fetch(unsplashsrc).then( data => {
+  imgUrl = data.url; 
+  updateSourceLink();               
+});
 }
 
 function updateSourceLink(sourceExists = true){
