@@ -83,8 +83,20 @@ function drawTouchPrompt() {
 }
 
 function openModal(){
-  
+  document.getElementById("info-modal").style.display = "block";
 }
+
+function closeModal(){
+  document.getElementById("info-modal").style.display = "none";
+}
+
+window.onclick = function(event) {
+  let modal = document.getElementById("info-modal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+
 
 //deprecated
 async function userLink() {
