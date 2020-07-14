@@ -134,3 +134,42 @@ a {
 #instruct-container{
   width: 100%;
 }
+
+#modal-open{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+  width: 1.3em;
+  box-shadow: 0 0px 6px #ffffff6b;
+  background: linear-gradient(
+    0deg,
+    rgb(48, 48, 48) 0%,
+    rgb(85, 85, 85) 100%
+  );
+}
+
+#modal-open:hover{
+  box-shadow: 0 0px 6px #ffffffbb;
+}
+
+ul{
+  text-align: left;
+}
+
+.modal{
+  background: linear-gradient(
+    0deg,
+    rgb(75, 75, 75) 0%,
+    rgb(49, 49, 49) 100%
+  );
+  margin: 0 auto;
+  position: fixed;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.modal-content{
+  margin: 0 auto;
+  padding: 3vw;
+}

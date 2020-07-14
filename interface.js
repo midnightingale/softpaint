@@ -82,6 +82,10 @@ function drawTouchPrompt() {
   text("touch to start", imgDimensions.w / 2, imgDimensions.h / 2);
 }
 
+function openModal(){
+  
+}
+
 //deprecated
 async function userLink() {
   imgUrl = window.prompt("Enter an image URL:", ".jpg, .png, etc.");
