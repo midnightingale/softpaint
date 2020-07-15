@@ -195,7 +195,7 @@ ul{
   border-radius: 10px;
   width: 70vw;
   max-width: min(300px, 60vw);
-  max-height: 50vh;
+  max-height: min(50vh, 300px);
   font-size: min(16px, 3vw);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.753);
 }
