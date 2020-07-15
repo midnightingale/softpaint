@@ -193,9 +193,11 @@ ul{
      rgb(75, 75, 75) 100%
   );
   border-radius: 10px;
+  width: 70vw;
   max-width: min(300px, 60vw);
   max-height: 40vh;
   font-size: min(16px, 3vw);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.753);
 }
 
 .close{
