@@ -25,7 +25,7 @@ function setup() {
   background(235);
   brushWeight = Math.floor(windowWidth / 15);
   displayBrushSize();
-  noStroke();
+  noStroke(); 
 }
 
 function draw() {
