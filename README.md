@@ -31,7 +31,7 @@ Images are dynamically sized based on the user's screen
 ☒ responsive resizing of uploaded or linked images  
 ☒ fetch images from Unsplash instead of Picsum  
 ☒ display "touch to start" for mobile  
-☒ fix source link wrong redirect on double click
+☒ fix source link wrong redirect on double click  
 ☐ update README with gifs :)
 
 -------------------
